@@ -1,0 +1,13 @@
+// Bootstrap
+@import '~/bootstrap/scss/bootstrap.scss';
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.required {
+    &:after {
+        content: '*';
+        color: red;
+    }
+}

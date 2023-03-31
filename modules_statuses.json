@@ -1,0 +1,18 @@
+{
+    "Auth": true,
+    "Roles": true,
+    "Users": true,
+    "Dashboard": true,
+    "PasswordChange": true,
+    "Posts": true,
+    "Category": true,
+    "Admin": true,
+    "Tag": true,
+    "AdminDashboard": true,
+    "Page": true,
+    "Post": true,
+    "Comments": true,
+    "ContactUS": true,
+    "SubCategory": true,
+    "Reporter": true
+}

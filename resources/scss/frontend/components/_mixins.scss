@@ -1,0 +1,13 @@
+.ads {
+    width: 100%;
+    img {
+        max-width: 100%;
+        display: block;
+        margin: auto;
+    }
+}
+.section-header {
+    font-family: $secondary-font;
+    color: rgba($color: $black-color, $alpha: .87);
+    font-size: 36px;
+}

@@ -1,0 +1,93 @@
+.category-header {
+    .category-title {
+        border-bottom: 1px solid $primary-color;
+    }
+    .last-news {
+        position: relative;
+        height: 475px;
+        background-image: url(../img/news-img/news_25.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(96deg,rgba(0,0,0,.84) 32%,
+            transparent 71%),linear-gradient(180deg,rgba(0,0,0,.84),
+            transparent 24%);
+            .header {
+                width: 75%;
+                .desc {
+                    font-size: 20px;
+                    line-height: 34px;
+                    letter-spacing: .5px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    figure {
+
+        &:hover {
+            .figure-caption {
+                color: $primary-color;
+            }
+        }
+        .fig-img {
+            img {
+                width: 175px;
+                height: 100%;
+                object-fit: cover;
+                transition: $transition;
+                
+            }
+        }
+        .category {
+            font-size: 14px;
+            color: $primary-color;
+        }
+        .figurecaption {
+            font-size: 15px;
+            transition: $transition;
+            line-height: 24px;
+            height: 50px;
+            letter-spacing: .5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .time {
+            font-size: 14px;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .category-header {
+        figure {
+            .fig-img {
+                img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 992px) {
+    .category-header {
+        figure {
+            .fig-img {
+                img {
+                    width: 180px;
+                }
+            }
+        }
+    }
+}

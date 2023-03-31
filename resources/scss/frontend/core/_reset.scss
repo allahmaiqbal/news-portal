@@ -1,0 +1,29 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+}
+
+
+*:focus {
+	box-shadow: none !important;
+}
+
+
+html {
+	scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: $black-color;
+}
+
+ul, ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+p {
+    padding: 0px;
+    margin: 0;
+}

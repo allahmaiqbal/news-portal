@@ -1,0 +1,54 @@
+.video-area {
+    padding: 60px 0px;
+    background-color: rgba($color: $black-color, $alpha: .03);
+    .header {
+        border-bottom: 1px solid $primary-color;
+    }
+    .video {
+        iframe {
+            width: 100%;
+            height: 480px;
+        }
+        .share-in-social {
+            .share {
+                color: darken($color: $secondary-color, $amount: 5%);
+            }
+            .social {
+                img {
+                    width: 30px;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .video-area {
+        .video {
+            iframe {
+                height: 290px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .video-area {
+        .video {
+            iframe {
+                height: 190px;
+            }
+            .share-in-social {
+                .share {
+                    font-size: 16px;
+                }
+                .social {
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

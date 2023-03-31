@@ -1,0 +1,11 @@
+{
+    "name": "PasswordChange",
+    "alias": "passwordchange",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PasswordChange\\Providers\\PasswordChangeServiceProvider"
+    ],
+    "files": []
+}

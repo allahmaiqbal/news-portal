@@ -1,0 +1,23 @@
+{
+    "name": "themaxsop/posts",
+    "description": "",
+    "authors": [
+        {
+            "name": "MaxSOP",
+            "email": "maxsopofficial@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Posts\\": ""
+        }
+    }
+}
