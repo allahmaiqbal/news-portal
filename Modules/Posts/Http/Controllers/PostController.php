@@ -24,30 +24,38 @@ class PostController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $category = $request->input('category');
+        $published = $request->input('published');
+        $title = $request->input('title');
 
+        $query = Post::query();
 
-    //   $posts = Post::with(['category','category.subcategory'])
-    //          ->whereHas('category.subcategory')
-    //          ->paginate(10);
-        // return Post::all();
-        // return Post::with('category')->paginate();
-        $post_query = Post::query();
-        // eager load author
-        // $post_query->with('author:id,name');
-
-        // load current user's post
-        $post_query->ofCurrentUser();
-
-        if (request('orderBy') === 'oldest') {
-            $post_query->oldest('published_at');
-        } else {
-            $post_query->latest('published_at');
+        if ($category) {
+            $query->where('category_id', $category);
         }
 
-        $posts = $post_query->paginate(25);
-        return view('posts::index', compact('posts'));
+        if ($published === '1') {
+            $query->whereNotNull('published_at')
+                  ->where('published_at', '<=', now());
+        } elseif ($published === '0') {
+            $query->where(function ($q) {
+                $q->whereNull('published_at')
+                  ->orWhere('published_at', '>', now());
+            });
+        }
+
+        if ($title) {
+            $query->where('title', 'like', '%' . $title . '%');
+        }
+
+        $posts = $query->paginate();
+        $count = $posts->count();
+        $categories = Category::all();
+
+
+        return view('posts::index', compact('posts','categories','count'));
     }
 
     /**
