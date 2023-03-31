@@ -1,6 +1,6 @@
 @extends('page::layouts.master')
 
-@section('title', 'Page')
+@section('title', 'Post')
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 @endpush
@@ -26,6 +26,7 @@
                 <!-- page title -->
                 <div class="mt-3">
                     <h4 class="main-title">Create new posts</h4>
+                    <p class="fw-bold"><small>All <span style="color: red">*</span> Mark must be required</small></p>
                 </div>
 
                 <!-- header icon -->
@@ -36,7 +37,7 @@
         <div class="card-body p-0 pt-2">
             <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col-8">
                         <div class="row">
                             <div class="col-12">
@@ -47,9 +48,9 @@
                                     required placeholder="Enter Name" />
                             </div>
 
-                            <div id="vueRoot">
+                            {{-- <div id="vueRoot">
                                 <category-subcategory :categories="{{ json_encode($categories) }}" />
-                            </div>
+                            </div> --}}
 
                             <div class="col-12">
                                 <x-forms.label for="task-textarea" required>
@@ -65,6 +66,19 @@
                         <div class="row">
                             <div class="">
                                 <div class="">
+
+                                    <div class="col-12">
+                                        <x-forms.label for="category_id" required>
+                                            Select Category
+                                        </x-forms.label>
+                                        <select class="form-select" id="category_id" name="category_id" required>
+                                            <option  disabled selected>Chose one</option>
+                                            @foreach ($categories as $category)
+                                               <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="col-12">
                                         <x-forms.label for="image-title">
                                             Image Title
@@ -74,18 +88,18 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <x-forms.label for="image">
+                                        <x-forms.label for="image" required>
                                             image
                                         </x-forms.label>
                                         <x-forms.input type="file" id="image" name="image"
-                                            placeholder="Enter title" />
+                                            placeholder="Enter title"  required/>
                                         <div class="form-group">
                                             <img id="image-preview" src=""
-                                                alt=""style="max-width: 100px; max-height: 90px;">
+                                                alt=""style="max-width: 100px; max-height: 90px;" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
+                                    {{-- <div class="col-12">
                                         <x-forms.label for="thumbnail">
                                             Thumbnail
                                         </x-forms.label>
@@ -95,14 +109,14 @@
                                             <img id="thumbnail-preview" src="" alt=""
                                                 style="max-width: 100px; max-height: 90px;">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-12">
-                                        <x-forms.label>
+                                        <x-forms.label for="tags" required>
                                             Slelect Tag
                                         </x-forms.label><br />
                                         <input name="tags" class="form-control tags tagify-input"
-                                            placeholder="write some tags" value="" list="related-model-list">
+                                            placeholder="write some tags" value="" list="related-model-list" required>
                                         <datalist id="related-tags-list">
                                             @foreach ($tags as $tag)
                                                 <option value="{{ $tag->name }}">
