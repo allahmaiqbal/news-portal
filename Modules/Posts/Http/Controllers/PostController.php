@@ -78,7 +78,7 @@ class PostController extends Controller
     public function store(PostStoreRequest $request)
     {
         // return $request->validated();
-        $post =  Post::create($request->validated());
+      $post =  Post::create($request->validated());
 
         if ($request->hasFile('thumbnail')) {
             // add thumbnail
@@ -90,21 +90,39 @@ class PostController extends Controller
             $post->addMediaFromRequest('image')
                 ->toMediaCollection(Post::MEDIA_COLLECTION_AVATAR);
         }
-        if ($request->has('tags')) {
-            $tags = [];
 
-            foreach (json_decode($request->tags, true) as $tagName) {
-                $slug = Str::uniqueSlug(Tag::class, $tagName['value']);
-                $tag = Tag::create(
-                    [
-                        'name' => $tagName['value'],
-                        'slug' => $slug
-                    ]
-                );
-                $tags[] = $tag->id;
+        if ($request->has('tags') && $request->tags !== null) {
+            $tags = [];
+            $decodedTags = json_decode($request->tags, true);
+            if (is_array($decodedTags)) {
+                foreach ($decodedTags as $tagName) {
+                    $slug = Str::uniqueSlug(Tag::class, $tagName['value']);
+                    $tag = Tag::updateOrCreate(
+                        [
+                            'name' => $tagName['value'],
+                            'slug' => $slug
+                        ]
+                    );
+                    $tags[] = $tag->id;
+                }
             }
             $post->tags()->attach($tags);
         }
+        // if ($request->has('tags')) {
+        //     $tags = [];
+
+        //     foreach (json_decode($request->tags, true) as $tagName) {
+        //         $slug = Str::uniqueSlug(Tag::class, $tagName['value']);
+        //         $tag = Tag::create(
+        //             [
+        //                 'name' => $tagName['value'],
+        //                 'slug' => $slug
+        //             ]
+        //         );
+        //         $tags[] = $tag->id;
+        //     }
+        //     $post->tags()->attach($tags);
+        // }
 
 
         return redirect()
@@ -151,41 +169,51 @@ class PostController extends Controller
 
         $post->update($request->validated());
 
-        // if ($request->hasFile('image')) {
-        //     $post->clearMediaCollection();
-        //     $post->addMediaFromRequest('image1')->usingName($post->title)->toMediaCollection('image');
-        // }
-
         // if ($request->hasFile('thumbnail')) {
         //     $post->clearMediaCollection();
-        //     $post->addMediaFromRequest('thumbnail')->usingName($post->title)->toMediaCollection('thumbnail');
+        //     $post->addMediaFromRequest('thumbnail')
+        //         ->toMediaCollection(Post::MEDIA_CONVERSION_AVATAR_THUMBNAIL);
         // }
-
-        if ($request->hasFile('thumbnail')) {
-            $post->clearMediaCollection();
-            $post->addMediaFromRequest('thumbnail')
-                ->toMediaCollection(Post::MEDIA_CONVERSION_AVATAR_THUMBNAIL);
-        }
         if ($request->hasFile('image')) {
             $post->clearMediaCollection();
             $post->addMediaFromRequest('image')
                 ->toMediaCollection(Post::MEDIA_COLLECTION_AVATAR);
         }
+        // if ($request->has('tags')) {
+        //     $tags = [];
 
-        if ($request->has('tags')) {
+        //     foreach (json_decode($request->tags, true) as $tagName) {
+        //         $slug = Str::uniqueSlug(Tag::class, $tagName['value']);
+        //         $tag = Tag::updateOrCreate(
+        //             [
+        //                 'name' => $tagName['value'],
+        //                 'slug' => $slug
+        //             ]
+        //         );
+        //         $tags[] = $tag->id;
+        //     }
+        //     $post->tags()->sync($tags, true);
+        //     $unusedTags = Tag::whereDoesntHave('posts')->get();
+        //     $unusedTags->each(function ($tag) {
+        //         $tag->delete();
+        //     });
+        // }
+
+        if ($request->has('tags') && $request->tags !== null) {
             $tags = [];
 
-            foreach (json_decode($request->tags, true) as $tagName) {
+            foreach (json_decode($request->tags, true) ?? [] as $tagName) {
                 $slug = Str::uniqueSlug(Tag::class, $tagName['value']);
-                $tag = Tag::updateOrCreate(
-                    [
-                        'name' => $tagName['value'],
-                        'slug' => $slug
-                    ]
-                );
+                $tag = Tag::updateOrCreate([
+                    'name' => $tagName['value'],
+                    'slug' => $slug,
+                ]);
                 $tags[] = $tag->id;
             }
+            // $post->tags()->sync([]);
+
             $post->tags()->sync($tags, true);
+
             $unusedTags = Tag::whereDoesntHave('posts')->get();
             $unusedTags->each(function ($tag) {
                 $tag->delete();

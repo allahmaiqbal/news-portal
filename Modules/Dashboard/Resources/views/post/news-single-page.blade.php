@@ -8,14 +8,12 @@
         <div class="row">
             <div class="col-lg-8 mb-3">
                 <div class="ads mb-3">
-                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="">
+                    <img src="#" alt="">
                 </div>
                 <p class="category-title d-block fs-5 fw-normal pb-2 mb-4">
                     সম্পূর্ণ নিউজ
                 </p>
-
                 <div class="row g-3 mb-3">
-
                     <div class="col-1">
                         <div class="reportar-img">
                             <img  src="{{ $post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR) }}"  alt="" width="100%">
@@ -24,14 +22,13 @@
                     <div class="col-11">
                         <div class="reportar-sec">
                             <p class="reportar-title border-bottom mb-1">
-                             {{ $post->reporter->name }}
+                              {{ $post->reporter->name }}
                             </p>
                             <p class="sgl-page-views-count">
                                 @php
-                                $banglaDateTime = \App\Helpers\formatDate($post->pulished_at, 'EEEE ,dd MMMM yyyy ,N ')->diffForHumans();
-                            @endphp
-
-                            <p>আপডেটের সময়: {{ $banglaDateTime }}</p>
+                                    $banglaDateTime = \App\Helpers\formatDate($post->pulished_at, 'EEEE ,dd MMMM yyyy ,N ');
+                                @endphp
+                               {{ $banglaDateTime }}
                                 {{-- আপডেটের সময় : বুধবার, ২৫ জানুয়ারী,২০২৩&nbsp; /&nbsp; সময় 2 months আগে --}}
                             </p>
                         </div>
@@ -40,13 +37,18 @@
 
                 <div class="full-news">
                     <figure>
-                        <img src="./img/news-img/news_30.jpg" alt="">
+                        {{-- <img src="{{  $post->reporter->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)  }}" alt=""> --}}
                         <p class="figcaption d-flex justify-content-between pt-2 px-1">
                             <span class="img-title">
                                 {{ $post->image_title }}
                             </span>
                             <span class="time text-muted">
-                                ৮ টা ১৪ মিনিট, ৯ মার্চ ২০২৩
+                              @php
+                              $publishedDate = \Carbon\Carbon::parse($post->published_at);
+                              $elapsedTime = $publishedDate->diffForHumans();
+                              $banglaElapsedTime = \App\Helpers\formatElapsedTime($elapsedTime);
+                            @endphp
+                            {{ $banglaElapsedTime }}
                             </span>
                         </p>
                     </figure>
@@ -69,6 +71,7 @@
                     সাম্প্রতিক খবর
                 </a>
 
+              @foreach ($latestPosts->take(5) as $post )
                 <a href="#" class="d-block mb-3">
                     <figure class="d-flex shadow overflow-hidden pe-2">
                         <div class="fig-img">
@@ -77,7 +80,7 @@
 
                         <div class="captions pt-2">
                             <p class="category d-block mb-1 fw-medium">
-                                বাংলাদেশ
+                               {{ $post->category->name }}
                             </p>
                             <p class="figurecaption">
                                 ঐতিহাসিক ৭ই মার্চের ভাষণের কতটুকু ধারণ করতে পেরেছি আমরা?
@@ -88,69 +91,10 @@
                         </div>
                     </figure>
                 </a>
+              @endforeach
 
-                <a href="#" class="d-block mb-3">
-                    <figure class="d-flex shadow overflow-hidden pe-2">
-                        <div class="fig-img">
-                            <img src="./img/news-img/news_23.jpg" alt="" class="me-2 overflow-hidden">
-                        </div>
-
-                        <div class="captions pt-2">
-                            <p class="category d-block mb-1 fw-medium">
-                                বাংলাদেশ
-                            </p>
-                            <p class="figurecaption">
-                                রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                            </p>
-                            <span class="time text-muted d-block mb-2">
-                                ১ ঘণ্টা আগে
-                            </span>
-                        </div>
-                    </figure>
-                </a>
-
-                <a href="#" class="d-block mb-3">
-                    <figure class="d-flex shadow overflow-hidden pe-2">
-                        <div class="fig-img">
-                            <img src="./img/news-img/news_25.png" alt="" class="me-2 overflow-hidden">
-                        </div>
-
-                        <div class="captions pt-2">
-                            <p class="category d-block mb-1 fw-medium">
-                                বাংলাদেশ
-                            </p>
-                            <p class="figurecaption">
-                                ঐতিহাসিক ৭ই মার্চের ভাষণের কতটুকু ধারণ করতে পেরেছি আমরা?
-                            </p>
-                            <span class="time text-muted d-block mb-2">
-                                ১ ঘণ্টা আগে
-                            </span>
-                        </div>
-                    </figure>
-                </a>
-
-                <a href="#" class="d-block mb-3">
-                    <figure class="d-flex shadow overflow-hidden pe-2">
-                        <div class="fig-img">
-                            <img src="./img/news-img/news_23.jpg" alt="" class="me-2 overflow-hidden">
-                        </div>
-
-                        <div class="captions pt-2">
-                            <p class="category d-block mb-1 fw-medium">
-                                বাংলাদেশ
-                            </p>
-                            <p class="figurecaption">
-                                রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                            </p>
-                            <span class="time text-muted d-block mb-2">
-                                ১ ঘণ্টা আগে
-                            </span>
-                        </div>
-                    </figure>
-                </a>
-
-                <div class="button mb-3">
-                    <a href="#" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
+                 <div class="button mb-3">
+                    <a href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
                         আরও সাম্প্রতিক খবর
                     </a>
                 </div>

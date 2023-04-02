@@ -2,7 +2,8 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_1.jpg") }}" class="" alt="...">
+            <img src="{{ asset('images/logo.jpg') }}" class="" alt="...">
+            {{-- <img src="{{asset ("resources/statics/frontend/img/news-img/news_1.jpg") }}" class="" alt="..."> --}}
 
             <div class="overlay position-absolute d-flex align-items-center">
                 <div class="container">
@@ -23,7 +24,7 @@
 
           </div>
           <div class="carousel-item">
-            <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_10.jpg") }}" class="" alt="...">
+            {{-- <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_10.jpg") }}" class="" alt="..."> --}}
 
             <div class="overlay position-absolute d-flex align-items-center">
                 <div class="container">
@@ -43,7 +44,7 @@
 
           </div>
           <div class="carousel-item">
-            <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_12.jpg") }}" class="" alt="...">
+            {{-- <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_12.jpg") }}" class="" alt="..."> --}}
 
             <div class="overlay position-absolute d-flex align-items-center">
                 <div class="container">

@@ -10,8 +10,8 @@
     <!-- aside brand -->
     <div class="aside-brand">
         <a href="dashboard.html">
-            <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}"
-                alt="">
+            {{-- <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}"
+                alt=""> --}}
         </a>
     </div>
     <!-- End aside-brand -->
@@ -128,20 +128,20 @@
         </li>
 
         <li class="accordion-item">
-            <a href="#" class="accordion-button {{ $currentRoute == 'advertisement' ? '' : 'collapsed' }}"
+            <a href="#" class="accordion-button {{ $currentRoute == 'add-advertise' ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" data-bs-target="#advertisement"
-                aria-expanded="{{ $currentRoute == 'advertisement' ? 'true' : 'false' }}"
+                aria-expanded="{{ $currentRoute == 'add-advertise' ? 'true' : 'false' }}"
                 aria-controls="advertisement">
                 <i class="bi bi-person"></i>
                 <span class="me-auto">Advertisement</span>
             </a>
 
             <ul id="advertisement"
-                class="accordion-collapse collapse {{ $currentRoute == 'advertisement' ? 'show' : '' }}"
+                class="accordion-collapse collapse {{ $currentRoute == 'add-advertise' ? 'show' : '' }}"
                 data-bs-parent="#page">
                 <li>
-                    <a href="{{ route('advertisement.index') }}"
-                        class="nav-link {{ $currentRouteName == 'advertisement.index' || $currentRouteName == 'advertisement.edit'||$currentRouteName == 'advertisement.show' ? 'active' : '' }}"
+                    <a href="{{ route('add-advertise.page') }}"
+                        class="nav-link {{ $currentRouteName == 'add-advertise.page'  ? 'active' : '' }}"
                         class="nav-link"><span>All advertisment</span>
                     </a>
 

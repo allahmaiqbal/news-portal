@@ -98,91 +98,14 @@
 
 
             <ul class="footer-nav text-center d-flex flex-row justify-content-center border-bottom flex-wrap my-4">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        বাংলাদেশ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        রাজনীতি
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        আন্তর্জাতিক
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        খেলা
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        বিনোদন
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        স্বাস্থ্য
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        বাণিজ্য
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        রংধনু স্পেশাল
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        শিক্ষা
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        মুক্তকথা
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        ধর্ম
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        চাকরি
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        বিজ্ঞান ও প্রযুক্তি
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        সময় প্রবাস
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        সাহিত্য ও সংস্কৃতি
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        লাইফস্টাইল
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        অন্যান্য
-                    </a>
-                </li>
+                @foreach ($pages as $page )
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('category.pages',$page->slug) }}">
+                        {{$page->name}}
+                        </a>
+                    </li>
+                @endforeach
+
             </ul>
         </div>
 

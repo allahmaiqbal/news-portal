@@ -9,7 +9,7 @@
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_1.jpg") }}" class="" alt="...">
+                {{-- <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_1.jpg") }}" class="" alt="..."> --}}
 
                 <div class="overlay position-absolute d-flex align-items-center">
                     <div class="container">
@@ -30,7 +30,7 @@
 
               </div>
               <div class="carousel-item">
-                <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_10.jpg") }}" class="" alt="...">
+                {{-- <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_10.jpg") }}" class="" alt="..."> --}}
 
                 <div class="overlay position-absolute d-flex align-items-center">
                     <div class="container">
@@ -50,7 +50,7 @@
 
               </div>
               <div class="carousel-item">
-                <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_12.jpg") }}" class="" alt="...">
+                {{-- <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_12.jpg") }}" class="" alt="..."> --}}
 
                 <div class="overlay position-absolute d-flex align-items-center">
                     <div class="container">
@@ -92,266 +92,44 @@
                     </a>
 
                     <div class="row g-2 g-lg-3">
+                       @php
+                           $post_slug = ''
+                       @endphp
+                        @foreach ($posts->take(9) as $post )
 
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_12.jpg") }}" class="" alt="..." class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            খেলা
-                                        </span>
+                        @php
+                                $post_slug = $post->slug;
+                        @endphp
+                            <div class="col-sm-6 col-md-4">
+                                <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
+                                    <figure class="d-flex">
+                                        <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="me-3">
+                                        <p>
+                                            <span class="category">
+                                                {{ $post->category->name }}
+                                            </span>
 
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
+                                            <span class="time text-muted d-block mb-2">
+                                            {{ $post->published_at->diffForHumans()}}
+                                            </span>
+                                        </p>
+                                    </figure>
 
-                                <a href="./single-news.html" class="news-details">
-                                    <h4 class="header fw-normal">
-                                        রিয়ালের মুখের হাসি কেড়ে নিল বার্সেলোনা
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        ওয়ানডে ও টি-টোয়েন্টি সংস্করণে ইংল্যান্ড বিশ্বচ্যাম্পিয়ন হওয়ার পর প্রথমবারের মতো তাদের বিপক্ষে সিরিজ খেলছে বাংলাদেশ।
-                                        ওয়ানডে ও টি-টোয়েন্টি সিরিজের আগে নানা কারণে বিতর্কিত টাইগাররা। এমন অবস্থায় মিরপুরের হোম অব ক্রিকেটে ইংলিশ
-                                        বধের স্বপ্ন নিয়ে নামছে তামিম ইকবালের দল।
-                                    </p>
-                                </a>
+                                    <a href="{{ route('news.pages',$post->slug) }}"  class="news-details">
+                                        <h4 class="header fw-normal">
+                                            {{ $post->title }}
+                                        </h4>
+                                        <p class="desc text-muted fw-medium">
+                                            {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_5.jpeg") }}" class="" alt="..." class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            বাংলাদেশ
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        ওয়ানডে ও টি-টোয়েন্টি সংস্করণে ইংল্যান্ড বিশ্বচ্যাম্পিয়ন হওয়ার পর প্রথমবারের মতো তাদের বিপক্ষে সিরিজ খেলছে বাংলাদেশ।
-                                        ওয়ানডে ও টি-টোয়েন্টি সিরিজের আগে নানা কারণে বিতর্কিত টাইগাররা। এমন অবস্থায় মিরপুরের হোম অব ক্রিকেটে ইংলিশ
-                                        বধের স্বপ্ন নিয়ে নামছে তামিম ইকবালের দল।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_17.jpg") }}" class="" alt="..." class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            আন্তর্জাতিক
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        ইরাকে আগ্রাসন ভুল ছিল বলে মনে করেন অধিকাংশ মার্কিনি
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        বিশ বছর আগে আজকের এ দিনে (২০ মার্চ) ইরাকে স্থল হামলা শুরু করেছিল যুক্তরাষ্ট্র।
-                                        বিমান শুরু করেছিল আরও একদিন আগেই অর্থাৎ ১৯ মার্চ। প্রায় ৮ বছর চলা সেই যুদ্ধে কেবল
-                                        ২ লাখের বেশি বেসামরিক ইরাকি নিহত হয়েছিল। সেই যুদ্ধ শুরুর ২০ বছর পর এসে অধিকাংশ
-                                        মার্কিনি মনে করছেন ইরাক যুদ্ধ ভুল ছিল। অনলাইন সংবাদমাধ্যম এক্সিওস ও জরিপ সংস্থা
-                                        ইপসসের জরিপ থেকে এ তথ্য উছে এসেছে।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_17.jpg") }}" class="" alt="..." class="me-2">
-                                    <p>
-                                        <span class="category">
-                                            রাজনীতি
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        আ.লীগের ফাঁদে আর পা দেবে না বিএনপি: ফখরুল
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        আগের মতো আর নির্বাচন করতে দেয়া হবে না বলে হুঁশিয়ারি দিয়ে বিএনপি মহাসচিব মির্জা ফখরুল
-                                        ইসলাম আলমগীর বলেছেন, ‘আওয়ামী লীগের পাতা ফাঁদে আর পা দেবে না বিএনপি।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_23.jpg" alt="" class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            বাংলাদেশ
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        স্মার্ট বাহিনী হিসেবে শিগগিরই আত্মপ্রকাশ করবে র‌্যাব: মহাপরিচালক
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        কোনো সন্ত্রাসী শক্তিই রাষ্ট্রের জন্য চ্যালেঞ্জ নয় উল্লেখ করে র‌্যাব মহাপরিচালক এম খুরশীদ হোসেন বলেছেন,
-                                        স্মার্ট বাহিনী হিসেবে খুব শিগগিরই আত্মপ্রকাশ করবে র‌্যাব; মানবাধিকার সমুন্নত রেখেই মোকাবিলা করা হবে সন্ত্রাসবাদ।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_18.jpg" alt="" class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            আন্তর্জাতিক
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        পারমাণবিক যুদ্ধের প্রস্তুতি নেয়ার নির্দেশ কিমের
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        যুক্তরাষ্ট্র ও দক্ষিণ কোরিয়ার বিরুদ্ধে পারমাণবিক যুদ্ধের জন্য দেশের সশস্ত্র বাহিনীকে প্রস্তুতি নেয়ার
-                                        নির্দেশ দিয়েছেন উত্তর কোরিয়ার প্রেসিডেন্ট কিম জং উন। দেশ দুটি পারমাণবিক অস্ত্র ব্যবহার করে
-                                         যৌথ সামরিক মহড়া চালাচ্ছে এমন অভিযোগ এনে এ নির্দেশ দিয়েছেন তিনি। উত্তর কোরিয়ার
-                                         সংবাদ সংস্থা কেসিএনএ-এর বরাত দিয়ে বার্তা সংস্থা রয়টার্স এ তথ্য জানিয়েছে।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_12.jpg" alt="" class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            খেলা
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html" class="news-details">
-                                    <h4 class="header fw-normal">
-                                        রিয়ালের মুখের হাসি কেড়ে নিল বার্সেলোনা
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        ওয়ানডে ও টি-টোয়েন্টি সংস্করণে ইংল্যান্ড বিশ্বচ্যাম্পিয়ন হওয়ার পর প্রথমবারের মতো তাদের বিপক্ষে সিরিজ খেলছে বাংলাদেশ।
-                                        ওয়ানডে ও টি-টোয়েন্টি সিরিজের আগে নানা কারণে বিতর্কিত টাইগাররা। এমন অবস্থায় মিরপুরের হোম অব ক্রিকেটে ইংলিশ
-                                        বধের স্বপ্ন নিয়ে নামছে তামিম ইকবালের দল।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_5.jpeg" alt="" class="me-3">
-                                    <p>
-                                        <span class="category">
-                                            বাংলাদেশ
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        ওয়ানডে ও টি-টোয়েন্টি সংস্করণে ইংল্যান্ড বিশ্বচ্যাম্পিয়ন হওয়ার পর প্রথমবারের মতো তাদের বিপক্ষে সিরিজ খেলছে বাংলাদেশ।
-                                        ওয়ানডে ও টি-টোয়েন্টি সিরিজের আগে নানা কারণে বিতর্কিত টাইগাররা। এমন অবস্থায় মিরপুরের হোম অব ক্রিকেটে ইংলিশ
-                                        বধের স্বপ্ন নিয়ে নামছে তামিম ইকবালের দল।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
-                                <figure class="d-flex">
-                                    <img src="{{module_asset ("resources/statics/frontend/img/news-img/news_9.jpg") }}" class="" alt="..." class="me-3">
-                                    <img src="./img/news-img/news_9.jpg" class="card-img-top rounded-0">
-                                    <p>
-                                        <span class="category">
-                                            আন্তর্জাতিক
-                                        </span>
-
-                                        <span class="time text-muted d-block mb-2">
-                                            ১ ঘণ্টা আগে
-                                        </span>
-                                    </p>
-                                </figure>
-
-                                <a href="./single-news.html"  class="news-details">
-                                    <h4 class="header fw-normal">
-                                        ইরাকে আগ্রাসন ভুল ছিল বলে মনে করেন অধিকাংশ মার্কিনি
-                                    </h4>
-                                    <p class="desc text-muted fw-medium">
-                                        বিশ বছর আগে আজকের এ দিনে (২০ মার্চ) ইরাকে স্থল হামলা শুরু করেছিল যুক্তরাষ্ট্র।
-                                        বিমান শুরু করেছিল আরও একদিন আগেই অর্থাৎ ১৯ মার্চ। প্রায় ৮ বছর চলা সেই যুদ্ধে কেবল
-                                        ২ লাখের বেশি বেসামরিক ইরাকি নিহত হয়েছিল। সেই যুদ্ধ শুরুর ২০ বছর পর এসে অধিকাংশ
-                                        মার্কিনি মনে করছেন ইরাক যুদ্ধ ভুল ছিল। অনলাইন সংবাদমাধ্যম এক্সিওস ও জরিপ সংস্থা
-                                        ইপসসের জরিপ থেকে এ তথ্য উছে এসেছে।
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <div class="button">
-                        <a href="#" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
+                        <a href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
                             আরও সর্বশেষ খবর
                         </a>
                     </div>
@@ -362,109 +140,27 @@
                         সর্বাধিক পঠিত
                     </a>
 
-                    <a href="#" class="d-block mb-3">
+                    @foreach ($viewPosts->take(7) as $viewPost )
+                    <a href="{{ route('news.pages',$viewPost->slug) }}" class="d-block mb-3">
                         <figure class="d-flex shadow overflow-hidden">
                             <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_5.jpeg") }}" alt="" class="me-2 overflow-hidden">
+                                <img src="{{ asset( $viewPost->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="me-2 overflow-hidden">
                             </div>
                             <div class="captions pt-2">
                                 <p class="category d-block mb-1 fw-medium">
-                                    খেলা
+                                    {{ $viewPost->category->name }}
                                 </p>
                                 <p class="figure-caption">
-                                    রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
+                                    {{ $viewPost->title }}
                                 </p>
                             </div>
                         </figure>
                     </a>
 
-                    <a href="#" class="d-block mb-3">
-                        <figure class="d-flex shadow rounded-1 overflow-hidden">
-                            <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_1.jpg") }}" alt="" class="me-2 overflow-hidden">
-                            </div>
-
-                            <div class="captions pt-2">
-                                <p class="category d-block mb-1 fw-medium">
-                                    খেলা
-                                </p>
-                                <p class="figure-caption">
-                                    ঐতিহাসিক ৭ই মার্চের ভাষণের কতটুকু ধারণ করতে পেরেছি আমরা?
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-
-                    <a href="#" class="d-block mb-3">
-                        <figure class="d-flex shadow rounded-1 overflow-hidden">
-                            <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_2.jpg") }}" alt="" class="me-2 overflow-hidden">
-                            </div>
-
-                            <div class="captions pt-2">
-                                <p class="category d-block mb-1 fw-medium">
-                                    খেলা
-                                </p>
-                                <p class="figure-caption">
-                                    রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-
-                    <a href="#" class="d-block mb-3">
-                        <figure class="d-flex shadow rounded-1 overflow-hidden">
-                            <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_3.jpg") }}" alt="" class="me-2 overflow-hidden">
-                            </div>
-
-                            <div class="captions pt-2">
-                                <p class="category d-block mb-1 fw-medium">
-                                    খেলা
-                                </p>
-                                <p class="figure-caption">
-                                    বার্সা খেলোয়াড়দের ওপর ‘জাল নোট’ ছুঁড়ে বিলবাও সমর্থকদের প্রতিবাদ
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-
-                    <a href="#" class="d-block mb-3">
-                        <figure class="d-flex shadow rounded-1 overflow-hidden">
-                            <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_4.jpg") }}" alt="" class="me-2 overflow-hidden">
-                            </div>
-
-                            <div class="captions pt-2">
-                                <p class="category d-block mb-1 fw-medium">
-                                    খেলা
-                                </p>
-                                <p class="figure-caption">
-                                    ঐতিহাসিক ৭ই মার্চের ভাষণের কতটুকু ধারণ করতে পেরেছি আমরা?
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
-
-                    <a href="#" class="d-block mb-3">
-                        <figure class="d-flex shadow rounded-1 overflow-hidden">
-                            <div class="fig-img">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_5.jpeg") }}" alt="" class="me-2 overflow-hidden">
-                            </div>
-
-                            <div class="captions pt-2">
-                                <p class="category d-block mb-1 fw-medium">
-                                    আন্তর্জাতিক
-                                </p>
-                                <p class="figure-caption">
-                                    রফতানির নতুন বাজার খুঁজতে কূটনীতিকদের নির্দেশ প্রধানমন্ত্রীর
-                                </p>
-                            </div>
-                        </figure>
-                    </a>
+                    @endforeach
 
                     <div class="button">
-                        <a href="#" class="btn btn-outline-danger w-100 rounded-0 shadow-sm mt-3">
+                        <a href="{{ route('view-news.pages') }}" class="btn btn-outline-danger w-100 rounded-0 shadow-sm mt-3">
                             সর্বাধিক পঠিত
                         </a>
                     </div>
@@ -481,151 +177,69 @@
     <!-- national-news-area start -->
     <section class="all-news">
         <div class="container">
-
             <a href="./national.html" class="title d-block fs-5 fw-normal pb-2 mb-4">
                 বাংলাদেশ
             </a>
 
             <div class="row g-3">
-                <div class="col-lg-6">
-                    <a href="#">
-                        <div class="card main-news border-0 rounded-0">
-                            <div class="card-img rounded-0">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_9.jpg") }}" alt="" class="card-img-top rounded-0">
+                @foreach ($bangladesh_posts->take(1) as $post )
+                    <div class="col-lg-6">
+                        <a href="">
+
+                            <div class="card main-news border-0 rounded-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
+                                </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                       {{ $post->category->name }}
+                                    </p>
+                                    <h1 class="card-title fw-light mb-4">
+                                        {{ $post->title }}
+                                    </h1>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="place text-danger">
-                                    খুলনা
-                                </p>
-                                <h1 class="card-title fw-light mb-4">
-                                    খুলনায় চিকিৎসকদের কর্মবিরতি অব্যাহত রাখার ঘোষণা
-                                </h1>
-                                <p class="card-text">
-                                    চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                    চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                    হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                </p>
-                                <p class="time text-muted mt-2">
-                                    ৪৩ মিনিট আগে
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+               @endforeach
+
                 <div class="col-lg-6">
                     <div class="row g-3">
 
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_10.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খুলনা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            আ. লীগ ক্ষমতায় আসার পর বেড়েছে এডিবির সহযোগিতা: প্রধানমন্ত্রী
-                                        </h4>
-                                        <p class="card-text">
-                                            ডাচ্‌-বাংলা ব্যাংক লিমিটেডের টাকা ছিনতাইয়ের ঘটনায় নতুন করে আরও ৫৮ লাখ ৭ হাজার টাকা উদ্ধার হয়েছে বলে জানিয়েছে ঢাকা মহানগর গোয়েন্দা পুলিশ (ডিবি)
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                    @foreach ($bangladesh_posts->take(4) as $post )
+                       <div class="col-6">
+                        <a href="#">
+                            <div class="card news h-100 rounded-0 border-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_3.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খুলনা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            দেশে আরও সাতজন করোনা শনাক্ত
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                         {{ $post->category->name }}
+                                    </p>
+                                    <h4 class="card-title fw-normal">
+                                       {{ $post->title }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_7.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খুলনা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            বিদ্যুৎ হলো জনগণের টাকা লুটের খাত: ফখরুল
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_4.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খুলনা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            খুলনায় চিকিৎসকদের কর্মবিরতি অব্যাহত রাখার ঘোষণা
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                      </div>
+                            </div>
+                        </a>
+                       </div>
+                    @endforeach
                 </div>
             </div>
-
         </div>
     </section>
     <!-- national-news-area end -->
@@ -635,149 +249,65 @@
     <section class="all-news bg-white">
         <div class="container">
 
-            <a href="./international.html" class="title d-block fs-5 fw-normal pb-2 mb-4">
+            <a href="#" class="title d-block fs-5 fw-normal pb-2 mb-4">
                 আন্তর্জাতিক
             </a>
 
-            <div class="row g-3">
-                <div class="col-lg-6">
-                    <a href="#">
-                        <div class="card main-news border-0 rounded-0">
-                            <div class="card-img rounded-0">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_14.jpg") }}" alt="" class="card-img-top rounded-0">
+           <div class="row g-3">
+                @foreach ($international_posts->take(1) as $post )
+                    <div class="col-lg-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+
+                            <div class="card main-news border-0 rounded-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
+                                </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                       {{ $post->category->name }}
+                                    </p>
+                                    <h1 class="card-title fw-light mb-4">
+                                        {{ $post->title }}
+                                    </h1>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="place text-danger">
-                                    আন্তর্জাতিক
-                                </p>
-                                <h1 class="card-title fw-light mb-4">
-                                    এক দশকের দেনদরবার শেষে সমুদ্র চুক্তি স্বাক্ষর
-                                </h1>
-                                <p class="card-text">
-                                    চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                    চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                    হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                </p>
-                                <p class="time text-muted mt-2">
-                                    ৪৩ মিনিট আগে
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+               @endforeach
                 <div class="col-lg-6">
                     <div class="row g-3">
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_15.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            আন্তর্জাতিক
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            চীনের সামরিক বাজেট বেড়ে দাঁড়াল ২২৪ বিলিয়ন ডলারে
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                    @foreach ($international_posts->take(4) as $post )
+                       <div class="col-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+                            <div class="card news h-100 rounded-0 border-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_16.jpg" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            আন্তর্জাতিক
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            এক দশকের দেনদরবার শেষে সমুদ্র চুক্তি স্বাক্ষর
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                         {{ $post->category->name }}
+                                    </p>
+                                    <h4 class="card-title fw-normal">
+                                       {{ $post->title }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_17.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            আন্তর্জাতিক
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            স্কিন ক্যানসারে আক্রান্ত হয়েছিলেন বাইডেন!
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6 mb-3">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_18.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            আন্তর্জাতিক
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            ইরানে শিক্ষার্থীদের বিষপ্রয়োগে ‘বিদেশি শত্রু’ জড়িত: রাইসি
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                      </div>
+                            </div>
+                        </a>
+                       </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -793,149 +323,65 @@
     <section class="all-news">
         <div class="container">
 
-            <a href="./sports.html" class="title d-block fs-5 fw-normal pb-2 mb-4">
+            <a href="#" class="title d-block fs-5 fw-normal pb-2 mb-4">
                 খেলা
             </a>
 
             <div class="row g-3">
-                <div class="col-lg-6">
-                    <a href="#">
-                        <div class="card main-news border-0 rounded-0">
-                            <div class="card-img rounded-0">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_11.jpg") }}" alt="" class="card-img-top rounded-0">
+                @foreach($sports_posts->take(1) as $post )
+                    <div class="col-lg-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+                            <div class="card main-news border-0 rounded-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
+                                </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                       {{ $post->category->name }}
+                                    </p>
+                                    <h1 class="card-title fw-light mb-4">
+                                        {{ $post->title }}
+                                    </h1>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="place text-danger">
-                                    খেলা
-                                </p>
-                                <h1 class="card-title fw-light mb-4">
-                                    ন্যান্তেসের বিপক্ষে গোল করে মেসির এক হাজারের মাইলফলক
-                                </h1>
-                                <p class="card-text">
-                                    চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                    চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                    হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                </p>
-                                <p class="time text-muted mt-2">
-                                    ৪৩ মিনিট আগে
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+               @endforeach
+
                 <div class="col-lg-6">
                     <div class="row g-3">
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-                                    <div class="card-img rounded-0">
-                                        <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_4.jpg" class="card-img-top rounded-0">
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খেলা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            ইংল্যান্ডের বিপক্ষে ব্যাটিংয়ে বাংলাদেশ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                    @foreach ($sports_posts->take(4) as $post )
+                       <div class="col-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+                            <div class="card news h-100 rounded-0 border-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_12.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খেলা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            কাভানিকে হটিয়ে পিএসজির সর্বোচ্চ গোলদাতা এখন এমবাপ্পে
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                         {{ $post->category->name }}
+                                    </p>
+                                    <h4 class="card-title fw-normal">
+                                       {{ $post->title }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_13.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খেলা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            নড়াইল থেকে ক্রিকেটার বের করে আনতে মাশরাফীর উদ্যোগ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_19.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            খেলা
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            পন্টিং না পারলেও ভারতের মাটিতে পেরেছেন স্মিথ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                      </div>
+                            </div>
+                        </a>
+                       </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -1100,144 +546,61 @@
             </a>
 
             <div class="row g-3">
-                <div class="col-lg-6">
-                    <a href="#">
-                        <div class="card main-news border-0 rounded-0">
-                            <div class="card-img rounded-0">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_21.jpg") }}" alt="" class="card-img-top rounded-0">
+                @foreach ($entertainment_posts->take(1) as $post )
+                    <div class="col-lg-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+
+                            <div class="card main-news border-0 rounded-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
+                                </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                       {{ $post->category->name }}
+                                    </p>
+                                    <h1 class="card-title fw-light mb-4">
+                                        {{ $post->title }}
+                                    </h1>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="place text-danger">
-                                    বিনোদন
-                                </p>
-                                <h1 class="card-title fw-light mb-4">
-                                    ন্যান্তেসের বিপক্ষে গোল করে মেসির এক হাজারের মাইলফলক
-                                </h1>
-                                <p class="card-text">
-                                    চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                    চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                    হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                </p>
-                                <p class="time text-muted mt-2">
-                                    ৪৩ মিনিট আগে
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
+
                 <div class="col-lg-6">
                     <div class="row g-3">
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_20.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            ইংল্যান্ডের বিপক্ষে ব্যাটিংয়ে বাংলাদেশ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                    @foreach ($entertainment_posts as $post )
+                       <div class="col-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+                            <div class="card news h-100 rounded-0 border-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_21.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            কাভানিকে হটিয়ে পিএসজির সর্বোচ্চ গোলদাতা এখন এমবাপ্পে
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                         {{ $post->category->name }}
+                                    </p>
+                                    <h4 class="card-title fw-normal">
+                                       {{ $post->title }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_22.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            নড়াইল থেকে ক্রিকেটার বের করে আনতে মাশরাফীর উদ্যোগ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_20.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            পন্টিং না পারলেও ভারতের মাটিতে পেরেছেন স্মিথ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                      </div>
+                            </div>
+                        </a>
+                       </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -1258,147 +621,62 @@
             </a>
 
             <div class="row g-3">
-                <div class="col-lg-6">
-                    <a href="#">
-                        <div class="card main-news border-0 rounded-0">
-                            <div class="card-img rounded-0">
-                                <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_20.jpg") }}" alt="" class="card-img-top rounded-0">
+                @foreach ($politics_posts->take(1) as $post )
+                    <div class="col-lg-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+
+                            <div class="card main-news border-0 rounded-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
+                                </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                       {{ $post->category->name }}
+                                    </p>
+                                    <h1 class="card-title fw-light mb-4">
+                                        {{ $post->title }}
+                                    </h1>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="place text-danger">
-                                    বিনোদন
-                                </p>
-                                <h1 class="card-title fw-light mb-4">
-                                    ন্যান্তেসের বিপক্ষে গোল করে মেসির এক হাজারের মাইলফলক
-                                </h1>
-                                <p class="card-text">
-                                    চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                    চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                    হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                </p>
-                                <p class="time text-muted mt-2">
-                                    ৪৩ মিনিট আগে
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+               @endforeach
                 <div class="col-lg-6">
                     <div class="row g-3">
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_21.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            ইংল্যান্ডের বিপক্ষে ব্যাটিংয়ে বাংলাদেশ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                    @foreach ($politics_posts as $post )
+                       <div class="col-6">
+                        <a href="{{ route('news.pages',$post->slug) }}">
+                            <div class="card news h-100 rounded-0 border-0">
+                                <div class="card-img rounded-0">
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="{{ module_asset("resources/statics/frontend/img/news-img/news_12.jpg") }}" alt="" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            কাভানিকে হটিয়ে পিএসজির সর্বোচ্চ গোলদাতা এখন এমবাপ্পে
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
+                                <div class="card-body">
+                                    <p class="place text-danger">
+                                         {{ $post->category->name }}
+                                    </p>
+                                    <h4 class="card-title fw-normal">
+                                       {{ $post->title }}
+                                    </h4>
+                                    <p class="card-text">
+                                        {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    </p>
+                                    <p class="time text-muted mt-2">
+                                        {{ $post->published_at->diffForHumans()}}
+                                    </p>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_13.jpg" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            নড়াইল থেকে ক্রিকেটার বের করে আনতে মাশরাফীর উদ্যোগ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-6">
-                            <a href="#">
-                                <div class="card news h-100 rounded-0 border-0">
-
-                                    <div class="card-img rounded-0">
-                                        <img src="./resources/statics/frontend/img/news-resources/statics/frontend/img/news_19.jpg" class="card-img-top rounded-0">
-                                    </div>
-
-                                    <div class="card-body">
-                                        <p class="place text-danger">
-                                            বিনোদন
-                                        </p>
-                                        <h4 class="card-title fw-normal">
-                                            পন্টিং না পারলেও ভারতের মাটিতে পেরেছেন স্মিথ
-                                        </h4>
-                                        <p class="card-text">
-                                            চিকিৎসকের ওপর হামলাকারী পুলিশের এএসআই নাঈম গ্রেফতার না হওয়া পর্যন্ত খুলনার সরকারি-বেসরকারি সব হাসপাতালে
-                                            চিকিৎসকদের কর্মবিরতি অব্যাহত থাকবে। এ ছাড়া  বৃহস্পতিবার (২ মার্চ) বেলা ১১টায় শহীদ শেখ আবু নাসের বিশেষায়িত
-                                            হাসপাতাল চত্বরে বিক্ষোভ সমাবেশ করার সিদ্ধান্ত নেয়া হয়েছে।
-                                        </p>
-                                        <p class="time text-muted mt-2">
-                                            ৪৩ মিনিট আগে
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                      </div>
+                            </div>
+                        </a>
+                       </div>
+                    @endforeach
                 </div>
             </div>
-
         </div>
     </section>
     <!-- politics-news-area end -->

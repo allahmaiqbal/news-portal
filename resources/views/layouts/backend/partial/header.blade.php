@@ -144,6 +144,20 @@
                                 </a>
                             </li>
                             <hr>
+
+
+
+
+                                    <li class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+                                        @can('users.index')
+                                        <li><a class="dropdown-item" href="{{ route('users.index') }}">Users</a></li>
+                                        @endcan
+                                        @can('roles.index')
+                                        <li><a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a></li>
+                                        @endcan
+                                    </li>
+
+
                             <li><a class="dropdown-item" href="user_settings.html">Settings</a></li>
                             <li><a class="dropdown-item" href="attendance.html">Attendance</a></li>
                             <li><a class="dropdown-item" href="change_password.html">Change Password</a></li>

@@ -3,7 +3,7 @@
         <div class="container">
 
             <a class="navbar-brand" href="{{ route('dashboard') }}" >
-                <img src="{{ module_asset("resources/statics/frontend/img/logo.png") }}" alt="" class="">
+                <img src="{{ asset('images/logo.png') }}" class="" alt="...">
             </a>
 
             <div class="input-group d-none d-lg-flex">

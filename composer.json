@@ -39,7 +39,8 @@
         },
         "files": [
             "app/Helpers/helperFunctions.php",
-            "app/Helpers/DateHelper.php"
+            "app/Helpers/DateHelper.php",
+            "app/Helpers/TimeHelper.php"
         ]
     },
     "autoload-dev": {

@@ -14,5 +14,7 @@
     "Comments": true,
     "ContactUS": true,
     "SubCategory": true,
-    "Reporter": true
+    "Reporter": true,
+    "Advertisement": true,
+    "Setting": true
 }

@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
 
-                                    {{-- <div class="col-12">
+                                    <div class="col-12">
                                         <x-forms.label for="thumbnail">
                                             Thumbnail
                                         </x-forms.label>
@@ -109,14 +109,14 @@
                                             <img id="thumbnail-preview" src="" alt=""
                                                 style="max-width: 100px; max-height: 90px;">
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <div class="col-12">
                                         <x-forms.label for="tags" required>
                                             Slelect Tag
                                         </x-forms.label><br />
-                                        <input name="tags" class="form-control tags tagify-input"
-                                            placeholder="write some tags" value="" list="related-model-list" required>
+                                        <input name="tags" id="tags" class="form-control tags tagify-input"
+                                            placeholder="write some tags" value="" list="related-model-list" >
                                         <datalist id="related-tags-list">
                                             @foreach ($tags as $tag)
                                                 <option value="{{ $tag->name }}">
@@ -161,7 +161,7 @@
                                         <x-forms.label for="reporter_id">
                                             Reporter Select
                                         </x-forms.label>
-                                        <select class="form-select  id="reporter_id" name="reporter_id">
+                                        <select class="form-select" id="reporter_id" name="reporter_id">
                                             <option selected disabled>Choose One</option>
                                             @foreach ($reporters as $reporter)
                                                 <option value="{{ $reporter->id }}">{{ $reporter->name }}</option>

@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="col-6">
-                        <x-forms.input type="text" name="name" required placeholder="Enter Name" />
+                        <x-forms.input type="text" id="name" name="name" required placeholder="Enter Name" />
                     </div>
                 </div>
 

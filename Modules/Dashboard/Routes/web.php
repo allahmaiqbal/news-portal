@@ -25,6 +25,8 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
     Route::prefix('')
     ->group(function () {
      Route::get('', [DashboardController::class, 'index'])->name('dashboard'); // remove permission to access dashboard
-     Route::get('/category/{id}',[DashboardController::class,'categoryPage']) ->name('category.pages') ;
+     Route::get('category/{slug}',[DashboardController::class,'categoryPage']) ->name('category.pages') ;
      Route::get('news/{slug}',[DashboardController::class,'newsPage'])->name('news.pages');
+     Route::get('breaking-news',[DashboardController::class,'breakingNews'])->name('breaking-news.pages');
+     Route::get('view-news',[DashboardController::class,'viewNews'])->name('view-news.pages');
     });

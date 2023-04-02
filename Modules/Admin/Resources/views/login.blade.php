@@ -19,7 +19,7 @@
                 <div class="p-4 pt-2">
                     <!-- Brand logo -->
                     <div class="text-center">
-                        <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}" class="logo" alt="Brand logo">
+                        {{-- <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}" class="logo" alt="Brand logo"> --}}
                     </div>
                     <hr>
 

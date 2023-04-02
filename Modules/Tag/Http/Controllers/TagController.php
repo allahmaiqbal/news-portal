@@ -18,7 +18,7 @@ class TagController extends Controller
     public function index()
     {
         $data = [];
-        $tag = Tag::all();
+        $tag = Tag::distinct()->get();
         $data['tag'] = $tag;
         return view('tag::index')->with($data);
         // return view('tag::index');
@@ -40,7 +40,6 @@ class TagController extends Controller
      */
     public function store(TagStoreRequest $request)
     {
-        return $request->validated();
         Tag::create($request->validated());
 
         return redirect()

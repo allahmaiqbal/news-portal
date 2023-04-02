@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
+use Modules\Page\Entities\Page;
+use Modules\Posts\Entities\Post;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Modules\Category\Entities\Category;
 use Modules\ContactUS\Entities\Contact;
-use Modules\Page\Entities\Page;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
        //Email data
         $emails = Contact::where('seen', 0)->latest()->get();
         view()->share('emails', $emails);
+        //breaking news
+        $latestPosts = Post::latest()->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        view()->share('latestPosts', $latestPosts);
 
         Paginator::useBootstrapFive();
     }

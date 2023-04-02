@@ -41,7 +41,7 @@ class TagStoreRequest extends FormRequest
         ];
      }
 
-    private function makeSlug($string) 
+    private function makeSlug($string)
     {
         // Remove any leading or trailing whitespace
         $string = trim($string);
