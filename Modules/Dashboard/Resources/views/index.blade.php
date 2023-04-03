@@ -110,7 +110,10 @@
                                             </span>
 
                                             <span class="time text-muted d-block mb-2">
-                                            {{ $post->published_at->diffForHumans()}}
+                                                @php
+                                                \Carbon\Carbon::setLocale('bn');
+                                                @endphp
+                                               {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                             </span>
                                         </p>
                                     </figure>
@@ -153,6 +156,12 @@
                                 <p class="figure-caption">
                                     {{ $viewPost->title }}
                                 </p>
+                                <span class="time text-muted d-block mb-2">
+                                    @php
+                                    \Carbon\Carbon::setLocale('bn');
+                                    @endphp
+                                   {{ \Carbon\Carbon::parse($viewPost->published_at)->diffForHumans(null, false, false) }}
+                                </span>
                             </div>
                         </figure>
                     </a>
@@ -202,7 +211,10 @@
                                     </p>
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                       {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>
@@ -231,7 +243,10 @@
                                         {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                    {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>
@@ -274,7 +289,10 @@
                                     </p>
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                       {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>
@@ -301,7 +319,10 @@
                                         {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                       {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>
@@ -347,7 +368,10 @@
                                     </p>
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                        {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>
@@ -375,7 +399,10 @@
                                         {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
                                     </p>
                                     <p class="time text-muted mt-2">
-                                        {{ $post->published_at->diffForHumans()}}
+                                        @php
+                                        \Carbon\Carbon::setLocale('bn');
+                                        @endphp
+                                    {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                     </p>
                                 </div>
                             </div>

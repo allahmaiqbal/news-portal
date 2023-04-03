@@ -32,7 +32,6 @@
                                     $banglaDateTime = \App\Helpers\formatDate($post->pulished_at, 'EEEE ,dd MMMM yyyy ,N ');
                                 @endphp
                                {{ $banglaDateTime }}
-                                {{-- আপডেটের সময় : বুধবার, ২৫ জানুয়ারী,২০২৩&nbsp; /&nbsp; সময় 2 months আগে --}}
                             </p>
                         </div>
                     </div>
@@ -46,12 +45,11 @@
                                 {{ $post->image_title }}
                             </span>
                             <span class="time text-muted">
-                              @php
-                              $publishedDate = \Carbon\Carbon::parse($post->published_at);
-                              $elapsedTime = $publishedDate->diffForHumans();
-                              $banglaElapsedTime = \App\Helpers\formatElapsedTime($elapsedTime);
-                            @endphp
-                            {{ $banglaElapsedTime }}
+                                @php
+                                \Carbon\Carbon::setLocale('bn');
+                                @endphp
+                               {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
+
                             </span>
                         </p>
                     </figure>
@@ -89,7 +87,11 @@
                                 {{ $post->title }}
                             </p>
                             <span class="time text-muted d-block mb-2">
-                                ১ ঘণ্টা আগে
+                                @php
+                                \Carbon\Carbon::setLocale('bn');
+                                @endphp
+                               {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
+
                             </span>
                         </div>
                     </figure>

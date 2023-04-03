@@ -49,9 +49,12 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $reporter->name }}</td>
-                            <td>{{ $reporter->mobile }}</td>
+                            <td>{{ $reporter->mobile ? $reporter->mobile:"N/A" }}</td>
                             <td>{{ $reporter->email }}</td>
-                            <td>{{ $reporter->image ?$reporter->image:'n/a' }}</td>
+                            <td>
+                                 @if ($reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR))
+                                         <img  src="{{ $reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR) }}"  alt="" height="50px" width="50px">
+                                @endif</td>
                             <td class="print-none text-end">
                                 {{-- <a href="element_details.html" class="btn table-small-button" title="View"><i
                                         class="bi bi-eye"></i></a> --}}

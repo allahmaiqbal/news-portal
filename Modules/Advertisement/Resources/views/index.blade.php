@@ -9,10 +9,10 @@
     <div class="mb-3">
         <div class="row">
             <div class="col-md-3">
-               @if ($advertise_1_img)
-                    <img class="img-thumbnail" src="{{Storage::url($advertise_1_img); }}" alt="image" height="200">
 
-               @endif
+                @if ($advertise_1_img)
+                <img class="img-thumbnail" src="{{ Storage::url($advertise_1_img) }}" alt="image" height="200">
+            @endif
                 <div class="mb-3">
                     <label for="advertise_1_img" class="form-label">Advertise 1 image</label>
                     <input class="form-control" name="advertise_1_img" type="file" id="advertise_1_img">
@@ -39,11 +39,11 @@
             </div>
 
             <div class="col-md-3">
-                @if ($advertise_2_img)
+                {{-- @if ($advertise_2_img)
                     <img class="img-thumbnail" src="{{Storage::url($advertise_2_img); }}" alt="image" height="200">
-               @endif
+               @endif --}}
                 <div class="mb-3">
-                    <label for="advertise_2_img" class="form-label">Advertise 2 image</label>
+                    {{-- <label for="advertise_2_img" class="form-label">Advertise 2 image</label> --}}
                     <input class="form-control" name="advertise_2_img" type="file" id="advertise_2_img">
 
                     @error('advertise_2_img')
@@ -58,11 +58,11 @@
                         id="advertise-link2"
                         name="advertise_link2" value="{{ old('advertise_link2',$advertise_link2) }}"
                         placeholder="Enter advertise link2">
-                    {{-- @error('advertise_link2')
+                    @error('advertise_link2')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                    @enderror --}}
+                    @enderror
                 </div>
             </div>
 
@@ -73,11 +73,11 @@
                 <div class="mb-3">
                     <label for="advertise_3_img" class="form-label">Advertise 3 image</label>
                     <input class="form-control" name="advertise_3_img" type="file" id="advertise_3_img">
-                    {{-- @error('advertise_3_img')
+                    @error('advertise_3_img')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                    @enderror --}}
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="advertise-link3" class="form-label">Link 3</label>
@@ -85,11 +85,11 @@
                         id="advertise-link3"
                         name="advertise_link3" value="{{ old('advertise_link3',$advertise_link3) }}"
                         placeholder="Enter advertise link3">
-                    {{-- @error('advertise_link3')
+                    @error('advertise_link3')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                    @enderror --}}
+                    @enderror
                 </div>
             </div>
 

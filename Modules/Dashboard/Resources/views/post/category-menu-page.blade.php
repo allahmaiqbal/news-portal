@@ -44,7 +44,6 @@
                            @endif
 
                         </div>
-
                         <div class="captions pt-2">
                             <p class="category d-block mb-1 fw-medium">
                               {{ $post->category->name }}
@@ -53,7 +52,10 @@
                                 {{ $post->title}}
                             </p>
                             <span class="time text-muted d-block mb-2">
-                                {{ $post->published_at->diffForHumans()}}
+                                @php
+                                \Carbon\Carbon::setLocale('bn');
+                                @endphp
+                               {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                             </span>
                         </div>
                     </figure>

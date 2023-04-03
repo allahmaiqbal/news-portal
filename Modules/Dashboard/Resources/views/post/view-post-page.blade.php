@@ -29,7 +29,10 @@
                                     {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
                                 </p>
                                 <span class="time text-muted d-block mb-2">
-                                    {{ $post->published_at->diffForHumans()}}
+                                    @php
+                                    \Carbon\Carbon::setLocale('bn');
+                                    @endphp
+                                   {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans(null, false, false) }}
                                 </span>
                             </div>
                         </figure>
