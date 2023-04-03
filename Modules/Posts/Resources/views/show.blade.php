@@ -144,14 +144,14 @@
                                        @endif
                                     </div>
 
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <strong class="small"> Thumbnail image : </strong>
                                     </div>
                                     <div class="col-md-8">
                                         @if ($post->hasMedia(\Modules\Posts\Entities\Post::MEDIA_CONVERSION_AVATAR_THUMBNAIL))
                                             <img class="img-thumbnail" src="{{ $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_CONVERSION_AVATAR_THUMBNAIL) }}" alt="" style="width:100%; height:100px">
                                         @endif
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 

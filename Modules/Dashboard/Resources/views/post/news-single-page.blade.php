@@ -16,7 +16,10 @@
                 <div class="row g-3 mb-3">
                     <div class="col-1">
                         <div class="reportar-img">
+                            @if ($post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR))
                             <img  src="{{ $post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR) }}"  alt="" width="100%">
+                           @endif
+
                         </div>
                     </div>
                     <div class="col-11">
@@ -37,7 +40,7 @@
 
                 <div class="full-news">
                     <figure>
-                        {{-- <img src="{{  $post->reporter->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)  }}" alt=""> --}}
+                        <img src="{{  $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)  }}" alt="">
                         <p class="figcaption d-flex justify-content-between pt-2 px-1">
                             <span class="img-title">
                                 {{ $post->image_title }}
@@ -72,10 +75,10 @@
                 </a>
 
               @foreach ($latestPosts->take(5) as $post )
-                <a href="#" class="d-block mb-3">
+                <a href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
                     <figure class="d-flex shadow overflow-hidden pe-2">
                         <div class="fig-img">
-                            <img src="./img/news-img/news_25.png" alt="" class=" me-2 overflow-hidden">
+                            <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR))  }}" alt="" class=" me-2 overflow-hidden">
                         </div>
 
                         <div class="captions pt-2">
@@ -83,7 +86,7 @@
                                {{ $post->category->name }}
                             </p>
                             <p class="figurecaption">
-                                ঐতিহাসিক ৭ই মার্চের ভাষণের কতটুকু ধারণ করতে পেরেছি আমরা?
+                                {{ $post->title }}
                             </p>
                             <span class="time text-muted d-block mb-2">
                                 ১ ঘণ্টা আগে

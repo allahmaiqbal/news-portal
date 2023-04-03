@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-lg-8 mb-3">
                @foreach ($category->posts->take(1) as $post )
-                <div class="last-news">
-                    <div class="overlay position-absolute d-flex align-items-center"  style="background-image: url('{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}')">
+                <div class="last-news"  style="background-image: url('{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}')">
+                    <div class="overlay position-absolute d-flex align-items-center" >
                         <div class="container">
                             <a href="{{ route('news.pages',$post->slug) }}" class="header text-white d-block mx-3">
                                 <h1 class="title">
@@ -35,7 +35,7 @@
 
             <div class="col-lg-4">
 
-                @foreach ($category->posts->take(2) as $post)
+                @foreach ($category->posts->take(5) as $post)
                   <a href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
                     <figure class="d-flex shadow overflow-hidden pe-2">
                         <div class="fig-img">
@@ -77,11 +77,12 @@
 
                 <div class="row g-2 g-lg-3">
 
-                   @foreach ($allPosts as $post)
+                   @foreach ($allPosts->take(9) as $post)
                     <div class="col-sm-6 col-md-4">
                             <div class="card h-100 border-0 shadow rounded-0 ps-2 pt-2">
                                 <figure class="d-flex">
-                                    <img src="./img/news-img/news_5.jpeg" alt="" class="me-3">
+
+                                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="me-3">
                                     <p>
                                         <span class="category">
                                         {{ $post->category->name }}
@@ -93,7 +94,7 @@
                                     </p>
                                 </figure>
 
-                                <a href="./single-news.html"  class="news-details">
+                                <a href="{{ route('news.pages',$post->slug) }}"  class="news-details">
                                     <h4 class="header fw-normal">
                                     {{ $post->title }}
                                     </h4>
@@ -107,7 +108,7 @@
                 </div>
 
                 <div class="button">
-                    <a href="#" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
+                    <a href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
                         আরও সর্বশেষ খবর
                     </a>
                 </div>

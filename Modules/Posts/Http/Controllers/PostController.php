@@ -50,7 +50,7 @@ class PostController extends Controller
             $query->where('title', 'like', '%' . $title . '%');
         }
 
-        $posts = $query->paginate();
+        $posts = $query->paginate(25);
         $count = $posts->count();
         $categories = Category::all();
 
@@ -87,7 +87,7 @@ class PostController extends Controller
         }
         if ($request->hasFile('image')) {
             // add thumbnail
-            $post->addMediaFromRequest('image')
+          $post->addMediaFromRequest('image')
                 ->toMediaCollection(Post::MEDIA_COLLECTION_AVATAR);
         }
 

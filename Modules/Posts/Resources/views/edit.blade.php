@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <x-forms.label for="thumbnail">
                                         Thumbnail
                                     </x-forms.label>
@@ -113,7 +113,7 @@
                                        <img class="img-thumbnail" src="{{ $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_CONVERSION_AVATAR_THUMBNAIL) }}"
                                             alt="" width="90px">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-12">
                                     <x-forms.label>
@@ -129,14 +129,14 @@
                                     </datalist>
                                 </div>
 
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <x-forms.label for="description">
                                         Short Description
                                     </x-forms.label><br />
                                     <x-forms.input type="textarea" id='description' rows="2" cols="80"
                                         value="{{ old('short_description',$post->short_description) }}" name="short_description"
                                         placeholder="Enter short description" />
-                                </div>
+                                </div> --}}
 
                                 <div class="col-12">
                                     <div class="row">

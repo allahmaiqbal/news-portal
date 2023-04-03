@@ -14,7 +14,36 @@
             </div>
 
             <p class="date ms-auto">
-                বুধবার, ১৫ ফেব্রুয়ারি ২০২৩, ফাল্গুন ১৪২৯
+                @php
+                $banglaDateTime = \App\Helpers\formatDate(now(), 'EEEE ,dd MMMM yyyy ,N ');
+            @endphp
+           {{ $banglaDateTime }}
+
+    @php
+    // Calculate the current Bangla year
+    $currentYear = date('Y');
+    $banglaYear = $currentYear - 593;
+    if ($currentYear < 2025) {
+        $banglaYear -= 1;
+    }
+    // Calculate the current Bangla month
+    $banglaMonths = [
+        'বৈশাখ', 'জ্যৈষ্ঠ', 'আষাঢ়', 'শ্রাবণ', 'ভাদ্র', 'আশ্বিন', 'কার্তিক', 'অগ্রহায়ণ', 'পৌষ', 'মাঘ', 'ফাল্গুন', 'চৈত্র'
+    ];
+    $currentMonth = date('n');
+    $banglaMonth = $banglaMonths[$currentMonth - 1];
+
+    // Convert the Bangla year and month to Bangla digits
+    $banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    $banglaYearDigits = str_split($banglaYear);
+    $banglaYearNumber = '';
+    foreach ($banglaYearDigits as $digit) {
+        $banglaYearNumber .= $banglaDigits[$digit];
+    }
+    @endphp
+
+   {{ $banglaMonth }}, {{ $banglaYearNumber }}
+                {{-- বুধবার, ১৫ ফেব্রুয়ারি ২০২৩, ফাল্গুন ১৪২৯ --}}
             </p>
 
 

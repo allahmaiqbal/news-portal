@@ -19,6 +19,7 @@
                 <div class="p-4 pt-2">
                     <!-- Brand logo -->
                     <div class="text-center">
+                        <img src="{{ asset('images/logo.png') }}" class="logo" alt="..." >
                         {{-- <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}" class="logo" alt="Brand logo"> --}}
                     </div>
                     <hr>
@@ -87,7 +88,7 @@
                     </form>
 
                     <!-- Sign in terms of use -->
-                    <div class="text-center text-small my-2">
+                    {{-- <div class="text-center text-small my-2">
                         <small>
                             By clicking signin, you agree to our <br>
                             <a href="#" class="text-small">Terms</a>
@@ -96,15 +97,15 @@
 
                             <p class="fw-bold mt-2">Updated on December 3, 2020</p>
                         </small>
-                    </div>
+                    </div> --}}
                     <hr>
 
                     <div class="mt-2 text-center">
-                        <!-- forgot password -->
+                        {{-- <!-- forgot password -->
                         <small class="d-block"><a href="forgot_password.html" >I forgot my Email address or Password</a></small>
 
                         <!-- Sign Up -->
-                        <small class="d-block">New to this system? <a href="signup.html">Signup</a></small>
+                        <small class="d-block">New to this system? <a href="signup.html">Signup</a></small> --}}
                     </div>
                 </div>
             </div>
