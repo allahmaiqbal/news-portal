@@ -64,7 +64,7 @@ class DashboardController extends Controller
         }])
         ->select('id', 'category_id', 'published_at', 'title', 'slug', 'content', 'post_count')
         ->whereNotNull('published_at')
-        ->latest('updated_at')
+        ->latest('published_at')
         ->whereHas('category', function ($query) {
             $query->where('name', 'খেলা');
         })
@@ -77,7 +77,7 @@ class DashboardController extends Controller
         }])
         ->select('id', 'category_id', 'published_at', 'title', 'slug', 'content', 'post_count')
         ->whereNotNull('published_at')
-        ->latest('updated_at')
+        ->latest('published_at')
         ->whereHas('category', function ($query) {
             $query->where('name', 'বিনোদন');
         })
@@ -90,7 +90,7 @@ class DashboardController extends Controller
             ->orderByDesc('post_count')
             ->get();
         //all post
-        $posts = post::latest()->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        $posts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
 
         return view('dashboard::index',compact('posts',
         'viewPosts',
@@ -106,7 +106,7 @@ class DashboardController extends Controller
         $pages = Page::with(['category' => function($query) {
             $query->select('id', 'name', 'slug', 'page_id');
         }, 'category.posts' => function($query) {
-            $query->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content')->latest();
+            $query->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content')->latest('published_at');
         }])
         ->where('slug', $slug)
         ->firstOrFail();
@@ -119,7 +119,7 @@ class DashboardController extends Controller
             ->get();
 
         //all latest post
-        $allPosts = post::latest()->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        $allPosts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
         return view('dashboard::post.category-menu-page',compact('category','viewPosts','allPosts'));
     }
 
@@ -135,7 +135,7 @@ class DashboardController extends Controller
 
     public function breakingNews(){
 
-        $allLatestPosts = post::latest()->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        $allLatestPosts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
         return view('dashboard::post.latest-news-page',compact('allLatestPosts'));
     }
 

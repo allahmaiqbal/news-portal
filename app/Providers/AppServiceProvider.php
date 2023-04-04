@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $emails = Contact::where('seen', 0)->latest()->get();
         view()->share('emails', $emails);
         //breaking news
-        $latestPosts = Post::latest()->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        $latestPosts = Post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
         view()->share('latestPosts', $latestPosts);
 
         Paginator::useBootstrapFive();

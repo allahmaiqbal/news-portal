@@ -164,7 +164,7 @@
         <div class="row">
             @foreach ($category->posts as $post)
                 <div class="col-12">
-                    <a href="#" class="d-block mb-3">
+                    <a href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
                         <figure class="d-flex shadow overflow-hidden pe-lg-5">
                             <div class="fig-img">
                                 <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR))  }}" alt="" class=" me-3 overflow-hidden object-fit-cover">

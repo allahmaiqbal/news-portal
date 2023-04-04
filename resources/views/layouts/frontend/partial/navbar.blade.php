@@ -64,7 +64,7 @@
 
                 <div class="button ms-auto px-3">
                     <a href="./reg.html" class="enter">লাইভ টিভি</a>
-                    <a href="./news-main.html" class="enter">সকল খবর</a>
+                    <a href="#" class="enter">সকল খবর</a>
                 </div>
 
                 <div class="input-group px-3">
@@ -292,8 +292,8 @@
                     </li> --}}
                 </ul>
                 <div class="button ms-auto">
-                    <a href="./index.html" class="enter" target="_blank">লাইভ টিভি</a>
-                    <a href="./news-main.html" class="enter">সকল খবর</a>
+                    <a href="#" class="enter" target="_blank">লাইভ টিভি</a>
+                    <a href="{{ route('dashboard') }}" class="enter">সকল খবর</a>
                 </div>
             </div>
         </div>
