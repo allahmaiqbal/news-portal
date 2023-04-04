@@ -90,7 +90,7 @@ class DashboardController extends Controller
             ->orderByDesc('post_count')
             ->get();
         //all post
-        $posts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        $posts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id','breaking_news', 'published_at', 'title', 'slug', 'content','post_count')->get();
 
         return view('dashboard::index',compact('posts',
         'viewPosts',

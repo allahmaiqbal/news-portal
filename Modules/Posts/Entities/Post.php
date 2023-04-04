@@ -44,6 +44,7 @@ class Post extends Model implements HasMedia
         'slug',
         'content',
         'can_comment',
+        'breaking_news',
         'published_at',
         'short_description',
 

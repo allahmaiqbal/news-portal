@@ -34,6 +34,7 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->string('title');
+            $table->integer('breaking_news')->default(0);
             $table->string('image_title')->nullable();
             $table->string('slug')->unique();
             $table->longText('content')->nullable();

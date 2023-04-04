@@ -26,6 +26,7 @@ class PostStoreRequest extends FormRequest
             'short_description' => 'nullable|string|max:500',
             'tags' => 'nullable',
             'reporter_id' =>'nullable',
+            'breaking_news'=>'nullable',
         ];
     }
 

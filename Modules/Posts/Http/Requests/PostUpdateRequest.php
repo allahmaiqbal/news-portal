@@ -27,6 +27,7 @@ class PostUpdateRequest extends FormRequest
             'is_published' => 'nullable|boolean',
             'short_description' => 'nullable|string|max:500',
             'tags' => 'nullable',
+            'breaking_news'=>'nullable',
             'reporter_id' =>'nullable',
         ];
     }

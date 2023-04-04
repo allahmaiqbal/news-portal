@@ -74,10 +74,15 @@
                                     </div>
 
                                     <div class="col-md-3 mb-2">
-                                        <strong class="small"> Subcategory: </strong>
+                                        <strong class="small"> Breaking news: </strong>
                                     </div>
                                     <div class="col-md-9">
-                                        <span>{!! $post->subcategory ? $post->subcategory->name : 'n/a' !!}</span>
+                                        <span @class([
+                                            'badge',
+                                            $post->breaking_news == 1 ? 'bg-success' : 'bg-warning'
+                                        ])>
+                                            {{ $post->breaking_news == 1 ? 'Yes' : 'No' }}
+                                        </span>
                                     </div>
 
                                     <div class="col-md-3">
@@ -101,12 +106,16 @@
                                         <strong class="small"> Can published: </strong>
                                     </div>
                                     <div class="col-md-9">
-                                        <span>
-                                             @if (!$post->isPublished())
-                                                Not
-                                            @endif
-                                                Published
-                                        </span></span>
+                                        <span @class([
+                                            'badge',
+                                            'bg-warning' => !$post->isPublished(),
+                                            'bg-success' => $post->isPublished(),
+                                        ])>
+                                        @if (!$post->isPublished())
+                                            Not
+                                        @endif
+                                        Published
+                                        </span>
                                     </div>
 
                                     <div class="col-md-3">

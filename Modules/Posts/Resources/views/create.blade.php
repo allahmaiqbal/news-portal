@@ -66,6 +66,38 @@
                         <div class="row">
                             <div class="">
                                 <div class="">
+                                    <div class="col-12">
+                                        <x-forms.label for="breakin-news">
+                                           Breaking News
+                                        </x-forms.label>
+                                        <div class="col-6">
+                                            <div class="d-flex">
+                                                <div class="form-check">
+                                                    <input type="radio" name="breaking_news" value="1" class="form-check-input" id="flexRadioDefault1">
+                                                    <label class="form-check-label" for="flexRadioDefault1">Yes</label>
+                                                </div>
+                                                <div class="form-check ms-3">
+                                                    <input type="radio" name="breaking_news" value="0" class="form-check-input" id="flexRadioDefault2"
+                                                        checked>
+                                                    <label class="form-check-label" for="flexRadioDefault2"> No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="col-6">
+                                        <div class="d-flex">
+                                            <div class="form-check">
+                                                <input type="radio" name="flexRadioDefault" class="form-check-input" id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1"> Default radio</label>
+                                            </div>
+                                            <div class="form-check ms-3">
+                                                <input type="radio" name="flexRadioDefault" class="form-check-input" id="flexRadioDefault2"
+                                                    checked>
+                                                <label class="form-check-label" for="flexRadioDefault2"> Default checked radio</label>
+                                            </div>
+                                        </div>
+                                    </div> --}}
 
                                     <div class="col-12">
                                         <x-forms.label for="category_id" required>

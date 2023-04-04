@@ -95,8 +95,9 @@
                                 <th scope="col">SL</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">Breaking news</th>
                                 <th scope="col">Published</th>
-                                <th scope="col">Can comment</th>
+                                {{-- <th scope="col">Can comment</th> --}}
                                 <th scope="col">Content</th>
                                 <th scope="col" class="print-none text-end">Action</th>
                             </tr>
@@ -108,19 +109,28 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{!! Illuminate\Support\Str::limit($post->title, 30, ' ......') !!}</td>
                                     <td>{{ $post->category->name }}</td>
-                                    <td class="text-center">
-                                        {{-- <span @class([
+                                     {{-- <td>{{ $post->breaking_news ==1 ? 'Yes':'No' }} <span class="badge bg-danger">Danger</span> --}}
+                                     <td class="text-center">
+                                        <span @class([
                                             'badge',
-                                            'badge-warning' => !$post->isPublished(),
-                                            'badge-success' => $post->isPublished(),
-                                        ])> --}}
+                                            $post->breaking_news == 1 ? 'bg-success' : 'bg-warning'
+                                        ])>
+                                            {{ $post->breaking_news == 1 ? 'Yes' : 'No' }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span @class([
+                                            'badge',
+                                            'bg-warning' => !$post->isPublished(),
+                                            'bg-success' => $post->isPublished(),
+                                        ])>
                                         @if (!$post->isPublished())
                                             Not
                                         @endif
                                         Published
                                         </span>
                                     </td>
-                                    <td>{{ $post->can_comment ? 'Yes' : 'No' }}</td>
+                                    {{-- <td>{{ $post->can_comment ? 'Yes' : 'No' }}</td> --}}
                                     <td> {!! Illuminate\Support\Str::limit($post->content, 30, ' ......') !!}</td>
                                     <td class="print-none text-end">
                                         <a href="{{ route('posts.show', $post->id) }}" class="btn table-small-button"
