@@ -56,9 +56,9 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
-                                    <label for="category">Category:</label>
+                                    <label for="category" class="form-label">Category:</label>
                                     <select id="category" class="form-select " name="category">
-                                        <option value="" >All</option>
+                                        <option value="" >All posts</option>
                                         @foreach($categories as $category)
 
                                             <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -67,19 +67,29 @@
                                 </div>
 
                                 <div class="col-12 col-sm-6 col-lg-3">
-                                    <label for="published">Published:</label>
+                                    <label for="published" class="form-label">Published:</label>
                                     <select id="published" class="form-select " name="published">
-                                        <option value="" >All</option>
+                                        <option value="" >All posts</option>
                                         <option value="1" {{ request('published') == '1' ? 'selected' : '' }}>Published</option>
                                         <option value="0" {{ request('published') == '0' ? 'selected' : '' }}>Not Published</option>
                                     </select>
                                 </div>
 
+                               <div class="col-12 col-sm-6 col-lg-3">
+                                    <label for="breaking_news" class="form-label">Breaking News:</label>
+                                    <select name="breaking_news" class="form-select "  id="breaking_news">
+                                        <option value="">All posts</option>
+                                        <option value="1" {{ request('breaking_news') == 1 ? 'selected' : '' }}>Breaking news</option>
+                                        <option value="0" {{ request('breaking_news') == 0 ? 'selected' : '' }}>Not breaking news</option>
+                                    </select>
+                               </div>
+
+
                                 <!-- button -->
                                 <div class="col-12 col-sm-6 col-lg-2">
                                     <label class="form-label">&nbsp;</label>
                                     <button type="submit" class="btn btn-block w-100 custom-btn btn-success">
-                                        <i class="bi bi-search"></i>
+                                        {{-- <i class="bi bi-search"></i> --}}
                                         <span class="p-1">Search</span>
                                     </button>
                                 </div>

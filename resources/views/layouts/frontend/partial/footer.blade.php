@@ -3,7 +3,7 @@
 
         <div class="primary-footer">
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 d-print-none">
                     <img class="footer-logo mb-2" src="./resources/statics/frontend/img/logo.png" alt="">
                     <p class="short-desc mb-3">
                         সত্য সংবাদ প্রকাশে সাহসী। তথ্য দিন সাথে থাকুন
@@ -26,7 +26,7 @@
                     </p>
                 </div>
 
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 d-print-none">
                     <h5 class="address mb-3">
                         <i class="fa-solid fa-location-dot me-2"></i>
                         ঠিকানাঃ
@@ -60,7 +60,7 @@
                     </p>
                 </div>
 
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 d-print-none">
                     <h5 class="mb-3">
                         <i class="fa-solid fa-address-book"></i>
                         যোগাযোগঃ
@@ -99,7 +99,7 @@
 
             <ul class="footer-nav text-center d-flex flex-row justify-content-center border-bottom flex-wrap my-4">
                 @foreach ($pages as $page )
-                    <li class="nav-item">
+                    <li class="nav-item d-print-none">
                         <a class="nav-link active" href="{{ route('category.pages',$page->slug) }}">
                         {{$page->name}}
                         </a>
@@ -109,8 +109,8 @@
             </ul>
         </div>
 
-        <div class="secondary-footer d-flex align-items-center justify-content-between">
-            <ul class="footer-nav d-flex flex-row flex-wrap">
+        <div class="secondary-footer d-flex align-items-center justify-content-between ">
+            <ul class="footer-nav d-flex flex-row flex-wrap d-print-none">
                 <li class="nav-item mb-0">
                     <a class="nav-link" href="/about.html">
                         আমাদের সম্পর্কে

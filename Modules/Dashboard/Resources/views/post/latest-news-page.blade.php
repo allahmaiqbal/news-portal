@@ -1,6 +1,6 @@
 @extends('dashboard::layouts.master')
 
-@section('title', 'breaking news')
+@section('title', 'সর্বশেষ সংবাদ')
 @section('content')
     <!-- more-news-area start -->
     <section class="more-news">

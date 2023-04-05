@@ -3,7 +3,8 @@
 @section('title', 'Advertisement')
 
 @section('content')
-   <form action="{{ route('add-advertise.store')}}" method="POST" enctype="multipart/form-data">
+   <h1>up comming</h1>
+   {{-- <form action="#" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
@@ -30,20 +31,20 @@
                         id="advertise-link1"
                         name="advertise_link1" value="{{ old('advertise_link1',$advertise_link1) }}"
                         placeholder="Enter advertise link1">
-                    {{-- @error('advertise_link1')
+                    @error('advertise_link1')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                    @enderror --}}
+                    @enderror
                 </div>
             </div>
 
             <div class="col-md-3">
-                {{-- @if ($advertise_2_img)
+                @if ($advertise_2_img)
                     <img class="img-thumbnail" src="{{Storage::url($advertise_2_img); }}" alt="image" height="200">
-               @endif --}}
+               @endif
                 <div class="mb-3">
-                    {{-- <label for="advertise_2_img" class="form-label">Advertise 2 image</label> --}}
+                    <label for="advertise_2_img" class="form-label">Advertise 2 image</label>
                     <input class="form-control" name="advertise_2_img" type="file" id="advertise_2_img">
 
                     @error('advertise_2_img')
@@ -123,5 +124,5 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
-   </form>
+   </form> --}}
 @endsection

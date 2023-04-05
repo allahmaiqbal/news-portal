@@ -1,6 +1,6 @@
 @extends('dashboard::layouts.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Home page')
 
 @section('content')
 
@@ -8,19 +8,19 @@
     <section class="hero-area">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-             {{-- @foreach ($posts->where('breaking_news',1)->take(3) as $key=> $post )
+             @foreach ($breakingNews as $key=> $breaking )
                @if($key===0)
                 <div class="carousel-item active">
-                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="">
+                    <img src="{{ asset( $breaking->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="">
                     <div class="overlay position-absolute d-flex align-items-center">
                         <div class="container">
                             <a href="#" class="btn category text-danger mb-3"> খেলা</a>
-                            <a href="{{route('news.pages',$post->slug) }}" class="header text-white d-block">
+                            <a href="{{route('news.pages',$breaking->slug) }}" class="header text-white d-block">
                                 <h1 class="title">
-                                    {{ $post->title }}
+                                    {{ $breaking->title }}
                                 </h1>
                                 <p class="desc">
-                                    {!!  Illuminate\Support\Str::limit($post->content, 150, ' ......')  !!}
+                                    {!!  Illuminate\Support\Str::limit($breaking->content, 150, ' ......')  !!}
                                 </p>
                             </a>
                         </div>
@@ -28,23 +28,23 @@
                 </div>
                 @else
                 <div class="carousel-item">
-                    <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="">
+                    <img src="{{ asset( $breaking->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="">
                     <div class="overlay position-absolute d-flex align-items-center">
                         <div class="container">
                             <a href="#" class="btn category text-danger mb-3"> খেলা</a>
-                            <a href="{{route('news.pages',$post->slug) }}" class="header text-white d-block">
+                            <a href="{{route('news.pages',$breaking->slug) }}" class="header text-white d-block">
                                 <h1 class="title">
-                                    {{ $post->title }}
+                                    {{ $breaking->title }}
                                 </h1>
                                 <p class="desc">
-                                    {!!  Illuminate\Support\Str::limit($post->content, 100, ' ......')  !!}
+                                    {!!  Illuminate\Support\Str::limit($breaking->content, 100, ' ......')  !!}
                                 </p>
                             </a>
                         </div>
                     </div>
                 </div>
                 @endif
-             @endforeach --}}
+             @endforeach
 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

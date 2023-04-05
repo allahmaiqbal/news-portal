@@ -89,16 +89,30 @@ class DashboardController extends Controller
             ->select('id', 'category_id', 'published_at', 'title', 'slug', 'content', 'post_count')
             ->orderByDesc('post_count')
             ->get();
-        //all post
+        //all latest post
         $posts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id','breaking_news', 'published_at', 'title', 'slug', 'content','post_count')->get();
+        //breaking news
 
-        return view('dashboard::index',compact('posts',
+         //$breakingNews = $posts->where('breaking_news',1);
+        // $breakingNews = Post::select('title','slug','content', 'published_at')
+        // ->where('breaking_news', 1)
+        // ->whereNotNull('published_at')
+        // ->get(5);
+
+     $breakingNews = Post::where('breaking_news', 1)
+        ->whereNotNull('published_at')
+        ->orderByDesc('published_at')
+        ->get();
+
+     return view('dashboard::index',compact('posts',
         'viewPosts',
         'bangladesh_posts',
         'international_posts',
         'sports_posts',
         'politics_posts',
-        'entertainment_posts'));
+        'entertainment_posts',
+        'breakingNews'
+    ));
     }
 
     public function categoryPage($slug){
@@ -120,6 +134,7 @@ class DashboardController extends Controller
 
         //all latest post
         $allPosts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
+
         return view('dashboard::post.category-menu-page',compact('category','viewPosts','allPosts'));
     }
 

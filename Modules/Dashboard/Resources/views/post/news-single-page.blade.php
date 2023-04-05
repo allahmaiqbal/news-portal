@@ -1,16 +1,16 @@
 @extends('dashboard::layouts.master')
 
-@section('title', 'Pages')
+@section('title', 'সম্পূর্ণ নিউজ')
 @section('content')
  <!-- single-news-area start -->
  <section class="single-news">
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-8 mb-3">
+            <div class="col-lg-8 mb-3"  class="d-print-none">
                 <div class="ads mb-3">
                     <img src="#" alt="">
                 </div>
-                <p class="category-title d-block fs-5 fw-normal pb-2 mb-4">
+                <p class="category-title d-block fs-5 fw-normal pb-2 mb-4"  >
                     সম্পূর্ণ নিউজ
                 </p>
                 <div class="row g-3 mb-3">
@@ -66,14 +66,12 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-4">
-
-                <a href="#" class="category-title d-block fs-5 fw-normal pb-2 mb-4">
+            <div class="col-lg-4" >
+                <a class="d-print-none" href="#" class="category-title d-block fs-5 fw-normal pb-2 mb-4">
                     সাম্প্রতিক খবর
                 </a>
-
               @foreach ($latestPosts->take(5) as $post )
-                <a href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
+                <a class="d-print-none" href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
                     <figure class="d-flex shadow overflow-hidden pe-2">
                         <div class="fig-img">
                             <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR))  }}" alt="" class=" me-2 overflow-hidden">
@@ -98,21 +96,19 @@
                 </a>
               @endforeach
 
-                 <div class="button mb-3">
-                    <a href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
+                <div class="button mb-3"  >
+                    <a  class="d-print-none"  href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
                         আরও সাম্প্রতিক খবর
                     </a>
                 </div>
 
-                <iframe class="fb-page mb-3" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <iframe class="fb-page mb-3 d-print-none" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
-                <div class="ads mb-3">
+                <div class="d-print-none"  class="ads mb-3">
                     <img src="https://placehold.co/300x600/png" alt="">
                 </div>
             </div>
         </div>
-
-
         <button onclick="window.print()" class="print text-capitalize">
             print
         </button>

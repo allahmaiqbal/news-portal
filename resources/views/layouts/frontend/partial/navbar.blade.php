@@ -1,8 +1,8 @@
 <section class="main-nav bg-white sticky-top">
-    <nav class="navbar navbar-expand-lg first-nav">
+    <nav class="navbar navbar-expand-lg first-nav d-print-none">
         <div class="container">
 
-            <a class="navbar-brand" href="{{ route('dashboard') }}" >
+            <a class="navbar-brand d-print-none" href="{{ route('dashboard') }}" >
                 <img src="{{ asset('images/logo.png') }}" class="" alt="...">
             </a>
 

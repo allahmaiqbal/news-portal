@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav my-2 text-end ms-auto mb-lg-0 py-3 py-lg-0">
                     <!-- Help -->
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">
                             <span class=" me-3 me-lg-1">Help</span>
                             <i class="bi bi-info-circle"></i>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="d-lg-none me-3">Profile</span>
@@ -143,25 +143,20 @@
                                     </div>
                                 </a>
                             </li>
-                            <hr>
-
-
-
-
-                                    <li class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
-                                        @can('users.index')
-                                        <li><a class="dropdown-item" href="{{ route('users.index') }}">Users</a></li>
-                                        @endcan
-                                        @can('roles.index')
-                                        <li><a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a></li>
-                                        @endcan
-                                    </li>
-
-
+                            <li>role based authentication ...(up comming)</li>
+                            {{-- <hr>
+                                <li class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+                                    @can('users.index')
+                                    <li><a class="dropdown-item" href="{{ route('users.index') }}">Users</a></li>
+                                    @endcan
+                                    @can('roles.index')
+                                    <li><a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a></li>
+                                    @endcan
+                                </li>
                             <li><a class="dropdown-item" href="user_settings.html">Settings</a></li>
                             <li><a class="dropdown-item" href="attendance.html">Attendance</a></li>
                             <li><a class="dropdown-item" href="change_password.html">Change Password</a></li>
-                            <hr>
+                            <hr> --}}
                             <li>
                                 <a class="dropdown-item" href="{{ route('admin-logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('admin-logout-form').submit();">
@@ -171,7 +166,7 @@
                                     @csrf
                                 </form>
                             </li>
-{{--                            <li><a class="dropdown-item" href="{{ route('admin-logout') }}">Log Out</a></li>--}}
+                           {{-- <li><a class="dropdown-item" href="{{ route('admin-logout') }}">Log Out</a></li> --}}
                         </ul>
                     </li>
                 </ul>

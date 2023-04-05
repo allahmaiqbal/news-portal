@@ -29,11 +29,17 @@ class PostController extends Controller
         $category = $request->input('category');
         $published = $request->input('published');
         $title = $request->input('title');
+        $breakingNews = $request->input('breaking_news');
 
         $query = Post::query();
 
         if ($category) {
             $query->where('category_id', $category);
+        }
+        if ($breakingNews === '1') {
+            $query->where('breaking_news', true);
+        }elseif($breakingNews === '0')  {
+            $query->where('breaking_news', '=', false);
         }
 
         if ($published === '1') {

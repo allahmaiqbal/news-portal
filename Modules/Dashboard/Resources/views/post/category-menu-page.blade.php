@@ -1,6 +1,5 @@
 @extends('dashboard::layouts.master')
-
-@section('title', 'Pages')
+@section('title', $category->name)
 @section('content')
    <!-- hero-area start -->
    <section class="category-header">
@@ -69,9 +68,9 @@
 <!-- hero-area end -->
 
 <!-- latest-news start -->
-<section class="latest-news">
+<section class="latest-news ">
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-8 mb-4">
                 <a href="#" class="title d-block fs-5 fw-normal pb-2 mb-4">
                     সর্বশেষ খবর
