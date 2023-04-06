@@ -1,0 +1,48 @@
+.search-result {
+    padding: 60px 0px;
+    .category-title {
+        border-bottom: 1px solid $primary-color;
+    }
+    .card {
+        .card-body {
+            .card-title {
+                transition: $transition;
+                line-height: 42px;
+                height: 80px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+            .card-text {
+                line-height: 28px;
+                letter-spacing: .5px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .time {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .search-result {
+        .card {
+            .card-body {
+                .card-title {
+                    line-height: 32px;
+                    height: 65px;
+                }
+            }
+        }
+    }
+}

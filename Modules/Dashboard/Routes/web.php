@@ -29,4 +29,5 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
      Route::get('news/{slug}',[DashboardController::class,'newsPage'])->name('news.pages');
      Route::get('breaking-news',[DashboardController::class,'breakingNews'])->name('breaking-news.pages');
      Route::get('view-news',[DashboardController::class,'viewNews'])->name('view-news.pages');
+     Route::get('search',[DashboardController::class,'searchNews'])->name('search-news.pages');
     });

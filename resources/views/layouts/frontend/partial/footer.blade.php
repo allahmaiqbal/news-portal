@@ -128,7 +128,7 @@
                 </li>
             </ul>
 
-            <p class="">&copy; 2023 News Portal. All rights reserved.</p>
+            <p class="d-print-none" >&copy; 2023 News Portal. All rights reserved.</p>
         </div>
 
     </div>

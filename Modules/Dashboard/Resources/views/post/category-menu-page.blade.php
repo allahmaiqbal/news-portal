@@ -13,7 +13,7 @@
                 <div class="last-news"  style="background-image: url('{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}')">
                     <div class="overlay position-absolute d-flex align-items-center" >
                         <div class="container">
-                            <a href="{{ route('news.pages',$post->slug) }}" class="header text-white d-block mx-3">
+                            <a  href="{{ route('news.pages',$post->slug) }}" class="header text-white d-block mx-3">
                                 <h1 class="title">
                                    {{$post->title }}
                                 </h1>

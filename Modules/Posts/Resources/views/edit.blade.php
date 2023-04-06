@@ -97,7 +97,7 @@
                                     <select class="form-select" id="category_id" name="category_id" required>
                                         <option  disabled selected>Chose one</option>
                                         @foreach ($categories as $category)
-                                           <option value="{{$category->id}}" {{$category->id === $post->category_id ? 'selected':'' }}>{{$category->name}}</option>
+                                           <option value="{{$category->id}}" {{$category->id == $post->category_id ? 'selected':'' }}>{{$category->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

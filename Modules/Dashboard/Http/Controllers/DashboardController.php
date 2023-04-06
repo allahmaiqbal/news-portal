@@ -163,4 +163,26 @@ class DashboardController extends Controller
         return view('dashboard::post.view-post-page',compact('viewPosts'));
     }
 
+    public function searchNews( Request $request){
+
+        $searchData = $request->input('q');
+
+        if (empty($searchData)) {
+            $news = collect([]);
+        } else {
+            $news = Post::latest('published_at')
+                ->whereNotNull('published_at')
+                ->select('id', 'category_id', 'published_at', 'title', 'slug', 'content', 'post_count')
+                ->where(function ($queryBuilder) use ($searchData) {
+                    $queryBuilder->where('title', 'LIKE', '%' . $searchData . '%')
+                                 ->orWhereHas('tags', function ($queryBuilder) use ($searchData) {
+                                     $queryBuilder->where('name', 'LIKE', '%' . $searchData . '%');
+                                 });
+                })
+                ->get();
+        }
+
+        return view('dashboard::post.search-post-page', compact('news','searchData'));
+    }
+
 }

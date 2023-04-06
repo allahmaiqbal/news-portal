@@ -10,8 +10,7 @@
     <!-- aside brand -->
     <div class="aside-brand">
         <a href="dashboard.html">
-            {{-- <img src="{{ module_asset('resources/statics/backend/resources/images/logos/logo_with_name.svg') }}"
-                alt=""> --}}
+            <img src="{{asset('images/logo.png') }}" height="50px" alt="">
         </a>
     </div>
     <!-- End aside-brand -->
@@ -149,6 +148,10 @@
 
             </ul>
         </li>
+        <div class="d-grid gap-2" style="margin-top: 20px">
+            <a href="{{ route('dashboard') }}" target="_blank" class="btn custom btn-outline-warning btn-sm">Visit website</a>
+        </div>
+
 
     </ul>
 

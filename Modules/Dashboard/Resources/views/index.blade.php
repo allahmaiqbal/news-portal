@@ -163,7 +163,7 @@
     <!-- national-news-area start -->
     <section class="all-news">
         <div class="container">
-            <a href="./national.html" class="title d-block fs-5 fw-normal pb-2 mb-4">
+            <a href="#" class="title d-block fs-5 fw-normal pb-2 mb-4">
                 বাংলাদেশ
             </a>
 

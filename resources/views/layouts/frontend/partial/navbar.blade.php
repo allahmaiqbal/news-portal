@@ -7,10 +7,15 @@
             </a>
 
             <div class="input-group d-none d-lg-flex">
-                <input type="text" class="form-control search-input rounded-0 px-3 py-2" type="search" placeholder="নিউজ খুঁজুন" aria-label="Search">
-                <button class="btn search-btn bg-black text-white rounded-0 px-3" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                <div class="input-group d-none d-lg-flex">
+                    <form action="{{ route('search-news.pages') }}" class="input-group" method="GET" required>
+                        <input type="text" class="form-control search-input rounded-0 px-3 py-2" name="q" type="search" value="{{ request('q') }}" placeholder="নিউজ খুঁজুন" aria-label="Search" onchange="enableButton()" id="searchInput">
+                        <button class="btn search-btn bg-black text-white rounded-0 px-3" type="submit" required disabled id="searchBtn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+             </a>
             </div>
 
             <p class="date ms-auto">
@@ -299,3 +304,18 @@
         </div>
     </nav>
 </section>
+@push('scripts')
+<script>
+    function enableButton() {
+        const input = document.querySelector('#searchInput');
+        const button = document.querySelector('#searchBtn');
+
+        if (input.value.trim() !== '') {
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+        }
+    }
+</script>
+
+@endpush

@@ -1449,11 +1449,9 @@
         const close = document.querySelector(".close-btn");
 
         contact.addEventListener("click", () => {
-        console.log("khalil");
         menu.classList.add('visible')
         });
         close.addEventListener("click", () => {
-        console.log("khalil");
         menu.classList.remove('visible')
         });
     </script>
