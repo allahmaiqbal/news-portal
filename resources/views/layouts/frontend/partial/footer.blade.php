@@ -71,7 +71,7 @@
                             ফোনঃ
                         </span>
                         <a href="tel:+৮৮০১৭১৫৮১৮৭৮৩">
-                            +৮৮০১৭১৫৮১৮৭৮৩
+                            {{ $mobileNumber }}
                         </a>
                     </p>
 
@@ -80,7 +80,7 @@
                             ইমেইলঃ
                         </span>
                         <a href="email:example@gmail.com">
-                            example@gmail.com
+                            {{ $emailAddress }}
                         </a>
                     </p>
 
@@ -88,8 +88,8 @@
                         <span class="title fw-medium">
                             ওয়েবসাইটঃ
                         </span>
-                        <a href="rongdhonutvnews24.com" target="_blank">
-                            rongdhonutvnews24.com
+                        <a href="https://rongdhonu.tv/" target="_blank">
+                        {{$sideName}}
                         </a>
                     </p>
 

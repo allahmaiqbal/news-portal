@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialShareController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'root']);
+Route::get('/posts/{id}', [SocialShareController::class, 'share'])->name('share');
+// Route::get('/share/{content}', 'ShareController@share')->name('share');

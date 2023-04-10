@@ -16,16 +16,15 @@
                 <div class="row g-3 mb-3">
                     <div class="col-1">
                         <div class="reportar-img">
-                            @if ($post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR))
-                            <img  src="{{ $post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR) }}"  alt="" width="100%">
-                           @endif
-
+                            @if ($post->reporter && $post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR))
+                                <img src="{{ $post->reporter->getFirstMediaUrl(\Modules\Reporter\Entities\Reporter::MEDIA_COLLECTION_AVATAR) }}" alt="" width="100%">
+                            @endif
                         </div>
                     </div>
                     <div class="col-11">
                         <div class="reportar-sec">
                             <p class="reportar-title border-bottom mb-1">
-                              {{ $post->reporter->name }}
+                                {{  $post->reporter ? $post->reporter->name:'' }}
                             </p>
                             <p class="sgl-page-views-count">
                                 @php
@@ -112,11 +111,11 @@
                 </div>
             </div>
         </div>
-        <div class="share-in-social d-flex align-items-center mb-2">
-            <h4 class="share mt-2 me-3">
+        <div class="share-in-social d-flex align-items-center mb-2 "  >
+            <h4 class="share mt-2 me-3 d-print-none" >
                 শেয়ার করুন :
             </h4>
-            <div class="social">
+            <div class="social d-print-none">
                 <a href="#" target="_blank">
                     <img src="{{ asset('images/social/facebook-logo.svg') }}" alt="">
                 </a>
@@ -135,6 +134,8 @@
                 <a href="#" target="_blank">
                     <img src="{{ asset('images/social/youtube-logo.svg') }}" alt="">
                 </a>
+
+
             </div>
         </div>
         <button onclick="window.print()" class="print text-capitalize">

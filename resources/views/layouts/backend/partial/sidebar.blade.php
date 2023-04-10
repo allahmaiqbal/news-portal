@@ -34,7 +34,7 @@
                 aria-expanded="{{ $currentRoute == 'category' ? 'true' : 'false' }}"
                 aria-controls="category">
                 <i class="bi bi-menu-button-wide"></i>
-                <span class="me-auto">Top Menubar</span>
+                <span class="me-auto">Menubar</span>
             </a>
 
             <ul id="category"
@@ -154,7 +154,7 @@
                 data-bs-toggle="collapse" data-bs-target="#basic-info"
                 aria-expanded="{{ $currentRoute == 'basic-info' ? 'true' : 'false' }}"
                 aria-controls="basic-info">
-                <i class="bi bi-badge-ad"></i>
+                <i class="bi bi-file-earmark-text"></i>
                 <span class="me-auto">Basic information</span>
             </a>
 

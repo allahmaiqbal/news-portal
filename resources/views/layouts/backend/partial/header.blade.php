@@ -131,13 +131,14 @@
                         </a>
                         <ul class="dropdown-menu"  aria-labelledby="user-dropdown">
                             <li>
-                                <a class="dropdown-item" href="user_profile.html">
+                                <a class="dropdown-item" href="#">
                                     <div class="d-flex align-items-center my-2">
                                         {{-- <img src="{{ module_asset('resources/statics/backend/resources/images/user/user.jpg') }}" class="user-icon" alt=""> --}}
                                         <div class="ms-2">
-                                            <h6>Musab Osman</h6>
+                                            <h6>{{ auth()->user()->name }}</h6>
                                             <div class="text-small">
-                                                musabosman3104@gmail.com
+                                                {{ auth()->user()->gamil }}
+                                                {{-- musabosman3104@gmail.com --}}
                                             </div>
                                         </div>
                                     </div>
@@ -152,11 +153,16 @@
                                     <li><a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a></li>
                                     @endcan
                                 </li>
-                                  {{--
-                            <li><a class="dropdown-item" href="user_settings.html">Settings</a></li>
-                            <li><a class="dropdown-item" href="attendance.html">Attendance</a></li>
-                            <li><a class="dropdown-item" href="change_password.html">Change Password</a></li>
-                            <hr> --}}
+
+                            {{-- <li><a class="dropdown-item" href="user_settings.html">Settings</a></li>
+                            <li><a class="dropdown-item" href="attendance.html">Attendance</a></li> --}}
+
+                                <li><a class="dropdown-item" href="{{ route('password.change') }}">Change Password</a></li>
+
+
+                            {{-- <li><a class="dropdown-item" href="change_password.html">Change Password</a></li> --}}
+                            <hr>
+
                             <li>
                                 <a class="dropdown-item" href="{{ route('admin-logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('admin-logout-form').submit();">
