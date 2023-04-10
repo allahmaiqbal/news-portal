@@ -248,9 +248,9 @@ class SettingController extends Controller
              'site_name' => 'nullable|string',
              'email' => 'nullable|email',
              'phone' => 'nullable|string',
-             'whatsapp_number' => 'nullable|string',
-             'booking_sending_emails' => 'nullable|string',
-             'logo'=> 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            //  'whatsapp_number' => 'nullable|string',
+            //  'booking_sending_emails' => 'nullable|string',
+            //  'logo'=> 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
          ]);
 
          Content::updateOrCreate([
@@ -271,28 +271,28 @@ class SettingController extends Controller
              'value' => $request->phone,
          ]);
 
-         Content::updateOrCreate([
-             'key' => Content::KEY_WHATSAPP_NUMBER,
-         ], [
-             'value' => $request->whatsapp_number,
-         ]);
+        //  Content::updateOrCreate([
+        //      'key' => Content::KEY_WHATSAPP_NUMBER,
+        //  ], [
+        //      'value' => $request->whatsapp_number,
+        //  ]);
 
-         Content::updateOrCreate([
-             'key' => Content::KEY_BOOKING_SENDING_EMAILS,
-         ], [
-             'value' => $request->booking_sending_emails,
-         ]);
+        //  Content::updateOrCreate([
+        //      'key' => Content::KEY_BOOKING_SENDING_EMAILS,
+        //  ], [
+        //      'value' => $request->booking_sending_emails,
+        //  ]);
 
-         if ($request->hasFile('logo')) {
+        //  if ($request->hasFile('logo')) {
 
-             $logo = $request->file('logo')->store('images/logo');
-             Content::updateOrCreate([
-                 'key' => Content::KEY_LOGO,
-             ], [
-                 'value' => $logo,
-             ]);
+        //      $logo = $request->file('logo')->store('images/logo');
+        //      Content::updateOrCreate([
+        //          'key' => Content::KEY_LOGO,
+        //      ], [
+        //          'value' => $logo,
+        //      ]);
 
-         }
+        //  }
 
          return redirect()
              ->back()

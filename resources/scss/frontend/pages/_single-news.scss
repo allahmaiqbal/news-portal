@@ -57,6 +57,17 @@
         width: 100%;
         height: 130px;
     }
+    .share-in-social {
+        .share {
+            color: darken($color: $secondary-color, $amount: 5%);
+        }
+        .social {
+            img {
+                width: 30px;
+                margin-right: 4px;
+            }
+        }
+    }
     .print {
         border: none;
         background-color: $primary-color;

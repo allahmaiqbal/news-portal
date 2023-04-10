@@ -30,4 +30,5 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
      Route::get('breaking-news',[DashboardController::class,'breakingNews'])->name('breaking-news.pages');
      Route::get('view-news',[DashboardController::class,'viewNews'])->name('view-news.pages');
      Route::get('search',[DashboardController::class,'searchNews'])->name('search-news.pages');
+     Route::get('live-tv',[DashboardController::class,'liveTv'])->name('live-tv.pages');
     });

@@ -112,6 +112,31 @@
                 </div>
             </div>
         </div>
+        <div class="share-in-social d-flex align-items-center mb-2">
+            <h4 class="share mt-2 me-3">
+                শেয়ার করুন :
+            </h4>
+            <div class="social">
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/facebook-logo.svg') }}" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/google-news-logo.svg') }}" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/instagram-logo.svg') }}" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/twitter-logo.svg') }}" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/whatsapp-logo.svg') }}" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="{{ asset('images/social/youtube-logo.svg') }}" alt="">
+                </a>
+            </div>
+        </div>
         <button onclick="window.print()" class="print text-capitalize">
             print
         </button>

@@ -297,7 +297,7 @@
                     </li> --}}
                 </ul>
                 <div class="button ms-auto">
-                    <a href="#" class="enter" target="_blank">লাইভ টিভি</a>
+                    <a href="{{ route('live-tv.pages') }}" class="enter" >লাইভ টিভি</a>
                     <a href="{{ route('dashboard') }}" class="enter">সকল খবর</a>
                 </div>
             </div>

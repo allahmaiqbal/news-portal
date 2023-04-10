@@ -11,8 +11,14 @@
 |
 */
 
-Route::prefix('dashboard')
-    ->middleware(['auth', 'permission.add'])
+// Route::prefix('dashboard')
+//     ->middleware(['auth', 'permission.add'])
+//     ->group(function () {
+//         Route::resource('users', \Modules\Users\Http\Controllers\UserController::class);
+//     });
+
+Route::prefix('backend')
+    ->middleware(['auth', 'permission.add', 'backend.permission'])
     ->group(function () {
         Route::resource('users', \Modules\Users\Http\Controllers\UserController::class);
     });

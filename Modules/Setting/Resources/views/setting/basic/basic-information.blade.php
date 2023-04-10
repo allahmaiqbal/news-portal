@@ -6,11 +6,7 @@
 <div class="container print-none">
     <ul class="nav nav-tabs mt-2">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('pages.index') }}">All Records</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link active" href="{{ route('pages.create') }}">New Entry</a>
+            <a class="nav-link">All basic information</a>
         </li>
     </ul>
 </div>
@@ -21,41 +17,71 @@
         <div class="card-header p-0 border-0 d-flex">
             <!-- page title -->
             <div class="mt-3">
-                <h4 class="main-title">Create new page</h4>
+                <h4 class="main-title">Create new basic information</h4>
             </div>
-
-            <!-- header icon -->
-            <x-icons.back-icon route="{{ route('pages.index') }}" />
         </div>
     </div>
 
     <div class="card-body p-0 pt-3">
-        <form action="{{ route('pages.store') }}" method="post">
+        <form action="{{ route('basic-info.store')}}" method="post">
             @csrf
-
-
-
             <div class="row mb-3">
                 <div class="col-2">
-                    <x-forms.label for="name" required>
-                        Name
+                    <x-forms.label for="site-name" required>
+                        Site name
                     </x-forms.label>
                 </div>
 
                 <div class="col-6">
-                    <x-forms.input type="text" name="name" required placeholder="Enter Name" />
+                    <input type="text" class="form-control @error('site_name') is-invalid @enderror"
+                    id="site-name"
+                    name="site_name" value="{{ old('site_name',$site_name) }}"
+                    placeholder="Enter site name">
+                    @error('site_name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-2">
-                    <x-forms.label for="description">
-                        Description
+                    <x-forms.label for="phone" required>
+                        Mobile
                     </x-forms.label>
                 </div>
 
-                <div class="col-8">
-                    <x-forms.input type="textarea" name="description" placeholder="enter description" />
+                <div class="col-6">
+                    <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                    id="phone"
+                    name="phone" value="{{ old('phone',$phone) }}"
+                    placeholder="Enter mobile number">
+                    @error('phone')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                    <x-forms.label for="site-name" required>
+                       Email
+                    </x-forms.label>
+                </div>
+
+                <div class="col-6">
+                    <input type="text" class="form-control @error('email') is-invalid @enderror"
+                    id="email-name"
+                    name="email" value="{{ old('email',$email) }}"
+                    placeholder="Enter email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
 
@@ -65,7 +91,6 @@
                 </div>
 
                 <div class="col-10">
-                    <x-buttons.reset />
                     <x-buttons.save />
                 </div>
             </div>

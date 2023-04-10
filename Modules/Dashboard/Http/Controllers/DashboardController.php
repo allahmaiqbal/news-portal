@@ -193,4 +193,10 @@ class DashboardController extends Controller
         return view('dashboard::post.search-post-page', compact('news','searchData'));
     }
 
+
+    public function liveTv(){
+        return view('dashboard::post.live-tv');
+
+    }
+
 }
