@@ -131,7 +131,7 @@
                 data-bs-toggle="collapse" data-bs-target="#advertisement"
                 aria-expanded="{{ $currentRoute == 'add-advertise' ? 'true' : 'false' }}"
                 aria-controls="advertisement">
-                <i class="bi bi-person"></i>
+                <i class="bi bi-badge-ad"></i>
                 <span class="me-auto">Advertisement</span>
             </a>
 
@@ -148,6 +148,30 @@
 
             </ul>
         </li>
+
+        <li class="accordion-item">
+            <a href="#" class="accordion-button {{ $currentRoute == 'basic-info' ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" data-bs-target="#basic-info"
+                aria-expanded="{{ $currentRoute == 'basic-info' ? 'true' : 'false' }}"
+                aria-controls="basic-info">
+                <i class="bi bi-badge-ad"></i>
+                <span class="me-auto">Basic information</span>
+            </a>
+
+            <ul id="basic-info"
+                class="accordion-collapse collapse {{ $currentRoute == 'basic-info' ? 'show' : '' }}"
+                data-bs-parent="#page">
+                <li>
+                    <a href="{{ route('basic-info.page') }}"
+                        class="nav-link {{ $currentRouteName == 'basic-info.page'  ? 'active' : '' }}"
+                        class="nav-link"><span>Contact</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </li>
+
         <div class="d-grid gap-2" style="margin-top: 20px">
             <a href="{{ route('dashboard') }}" target="_blank" class="btn custom btn-outline-warning btn-sm">Visit website</a>
         </div>

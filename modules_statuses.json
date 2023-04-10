@@ -16,5 +16,6 @@
     "SubCategory": true,
     "Reporter": true,
     "Advertisement": true,
-    "Setting": true
+    "Setting": true,
+    "Content": true
 }

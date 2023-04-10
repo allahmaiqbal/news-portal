@@ -157,7 +157,10 @@
     <!-- latest-news end -->
 
     <div class="ads my-3">
-        <img src="https://placehold.co/768x100/png" alt="">
+        @if ($advertiseOneUrl)
+            <img src="{{ asset('storage/' . $advertiseOneUrl) }}" alt="Advertise 1">
+        @endif
+        {{-- <img src="https://placehold.co/729x90/png" alt=""> --}}
     </div>
 
     <!-- national-news-area start -->
@@ -314,7 +317,10 @@
     <!-- inter-national-news-area end -->
 
     <div class="ads my-3">
-        <img src="https://placehold.co/768x100/png" alt="">
+        @if ($advertiseTwoUrl)
+        <img src="{{ asset('storage/' . $advertiseTwoUrl) }}" alt="Advertise 2">
+       @endif
+        {{-- <img src="https://placehold.co/768x100/png" alt=""> --}}
     </div>
 
     <!-- sports-news-area start -->
@@ -613,7 +619,10 @@
     <!-- intertainment-news-area end -->
 
     <div class="ads my-3">
-        <img src="https://placehold.co/768x100/png" alt="">
+        {{-- <img src="https://placehold.co/768x100/png" alt=""> --}}
+        @if ($advertiseThreeUrl)
+        <img src="{{ asset('storage/' . $advertiseThreeUrl) }}" alt="Advertise 3">
+       @endif
     </div>
 
     <!-- politics-news-area start -->

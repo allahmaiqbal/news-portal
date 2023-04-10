@@ -19,7 +19,12 @@ use Modules\Setting\Http\Controllers\SettingController;
 Route::prefix('backend')
     ->middleware(['auth', 'permission.add', 'backend.permission'])
     ->group(function () {
+        //Advertise
         Route::get('add-advertise', [SettingController::class, 'addAdvertise'])->name('add-advertise.page');
         Route::post('add-advertise', [SettingController::class, 'addAdvertiseStore'])->name('add-advertise.store');
+        //basic infomration
+        Route::get('basic-info', [SettingController::class, 'basicInfo'])->name('basic-info.page');
+        Route::post('basic-info', [SettingController::class, 'basicInfoStore'])->name('basic-info.store');
+
 
     });

@@ -2,13 +2,14 @@
 
 namespace Modules\Dashboard\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Modules\Page\Entities\Page;
 use Modules\Posts\Entities\Post;
-use Modules\Category\Entities\Category;
 use Modules\Users\Entities\User;
+use Illuminate\Routing\Controller;
+use Modules\Setting\Entities\Setting;
+use Modules\Category\Entities\Category;
+use Illuminate\Contracts\Support\Renderable;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+    // return $data['advertise_2_img'] = Setting::query()
+    //     ->key(Setting::KEY_ADVERTISE_TWO)
+    //     ->first()
+    //     ?->value;
 
         //bangladesh news data
         $bangladesh_posts = Post::with(['category' => function ($query) {
@@ -92,17 +97,14 @@ class DashboardController extends Controller
         //all latest post
         $posts = post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id','breaking_news', 'published_at', 'title', 'slug', 'content','post_count')->get();
         //breaking news
-
-         //$breakingNews = $posts->where('breaking_news',1);
-        // $breakingNews = Post::select('title','slug','content', 'published_at')
-        // ->where('breaking_news', 1)
-        // ->whereNotNull('published_at')
-        // ->get(5);
-
-     $breakingNews = Post::where('breaking_news', 1)
+        $breakingNews = Post::where('breaking_news', 1)
         ->whereNotNull('published_at')
         ->orderByDesc('published_at')
         ->get();
+        //advertisement
+        $advertiseOneUrl = Setting::where('key', Setting::KEY_ADVERTISE_ONE)->value('value');
+        $advertiseTwoUrl = Setting::where('key', Setting::KEY_ADVERTISE_TWO)->value('value');
+        $advertiseThreeUrl = Setting::where('key', Setting::KEY_ADVERTISE_THREE)->value('value');
 
      return view('dashboard::index',compact('posts',
         'viewPosts',
@@ -111,7 +113,10 @@ class DashboardController extends Controller
         'sports_posts',
         'politics_posts',
         'entertainment_posts',
-        'breakingNews'
+        'breakingNews',
+        'advertiseOneUrl',
+        'advertiseTwoUrl',
+        'advertiseThreeUrl',
     ));
     }
 
@@ -144,7 +149,10 @@ class DashboardController extends Controller
          ->firstOrFail();
         $post->post_count++;
         $post->save();
-        return view('dashboard::post.news-single-page',compact('post'));
+
+        //advertisement
+        $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
+        return view('dashboard::post.news-single-page',compact('post','advertiseFourUrl'));
     }
 
 

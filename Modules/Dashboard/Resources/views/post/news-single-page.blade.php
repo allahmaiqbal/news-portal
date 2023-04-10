@@ -105,7 +105,10 @@
                 <iframe class="fb-page mb-3 d-print-none" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                 <div class="d-print-none"  class="ads mb-3">
-                    <img src="https://placehold.co/300x600/png" alt="">
+                    @if ($advertiseFourUrl)
+                    <img src="{{ asset('storage/' . $advertiseFourUrl) }}" alt="Advertise 4">
+                   @endif
+                    {{-- <img src="https://placehold.co/300x600/png" alt=""> --}}
                 </div>
             </div>
         </div>

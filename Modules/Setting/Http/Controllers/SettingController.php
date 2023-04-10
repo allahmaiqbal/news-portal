@@ -2,10 +2,12 @@
 
 namespace Modules\Setting\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Content\Entities\Content;
 use Modules\Setting\Entities\Setting;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Support\Renderable;
 
 class SettingController extends Controller
 {
@@ -81,7 +83,7 @@ class SettingController extends Controller
     public function addAdvertise()
     {
         // return  Setting::all();
-    //  $data = [];
+       $data = [];
         // return Page::all();
        $data['advertise_1_img'] = Setting::query()
         ->key(Setting::KEY_ADVERTISE_ONE)
@@ -103,24 +105,8 @@ class SettingController extends Controller
         ->first()
         ?->value;
 
-
-        $data['advertise_link1'] = Setting::query()
-        ->key(Setting::KEY_ADVERTISE_lINK_ONE)
-        ->first()
-        ?->value;
-
-        $data['advertise_link2'] = Setting::query()
-        ->key(Setting::KEY_ADVERTISE_LINK_TWO)
-        ->first()
-        ?->value;
-
-        $data['advertise_link3'] = Setting::query()
-        ->key(Setting::KEY_ADVERTISE_LINK_THREE)
-        ->first()
-        ?->value;
-
-        $data['advertise_link4'] = Setting::query()
-        ->key(Setting::KEY_ADVERTISE_LINK_FOUR)
+        $data['advertise_5_img'] = Setting::query()
+        ->key(Setting::KEY_ADVERTISE_FIVE)
         ->first()
         ?->value;
     //  return $data;
@@ -135,28 +121,32 @@ class SettingController extends Controller
             'advertise_2_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'advertise_3_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'advertise_4_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'advertise_link1' => 'nullable|string',
-            'advertise_link2' => 'nullable|string',
-            'advertise_link3' => 'nullable|string',
-            'advertise_link4' => 'nullable|string',
+            'advertise_5_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
         //file upload
         if ($request->hasFile('advertise_1_img')) {
 
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_ONE)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
             $advertise_1_img = $request->file('advertise_1_img')->store('images/advertise');
             Setting::updateOrCreate([
                 'key' => Setting::KEY_ADVERTISE_ONE,
             ], [
                 'value' => $advertise_1_img,
             ]);
-            Setting::updateOrCreate([
-                'key' => Setting::KEY_ADVERTISE_lINK_ONE,
-            ], [
-                'value' => $request->advertise_link1,
-            ]);
+
         }
         if ($request->hasFile('advertise_2_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_TWO)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
 
             $advertise_2_img = $request->file('advertise_2_img')->store('images/advertise');
             Setting::updateOrCreate([
@@ -164,13 +154,16 @@ class SettingController extends Controller
             ], [
                 'value' => $advertise_2_img,
             ]);
-            Setting::updateOrCreate([
-                'key' => Setting::KEY_ADVERTISE_LINK_TWO,
-            ], [
-                'value' => $request->advertise_link2,
-            ]);
+
         }
+
         if ($request->hasFile('advertise_3_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_THREE)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
 
             $advertise_3_img = $request->file('advertise_3_img')->store('images/advertise');
             Setting::updateOrCreate([
@@ -179,13 +172,14 @@ class SettingController extends Controller
                 'value' => $advertise_3_img,
             ]);
 
-            Setting::updateOrCreate([
-                'key' => Setting::KEY_ADVERTISE_LINK_THREE,
-            ], [
-                'value' => $request->advertise_link3,
-            ]);
         }
         if ($request->hasFile('advertise_4_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
 
             $advertise_4_img = $request->file('advertise_4_img')->store('images/advertise');
             Setting::updateOrCreate([
@@ -193,16 +187,116 @@ class SettingController extends Controller
             ], [
                 'value' => $advertise_4_img,
             ]);
+        }
 
+        if ($request->hasFile('advertise_5_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_FIVE)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
+
+            $advertise_5_img = $request->file('advertise_5_img')->store('images/advertise');
             Setting::updateOrCreate([
-                'key' => Setting::KEY_ADVERTISE_LINK_FOUR,
+                'key' => Setting::KEY_ADVERTISE_FIVE,
             ], [
-                'value' => $request->advertise_link4,
+                'value' => $advertise_5_img,
             ]);
         }
 
         return redirect()
             ->back()
-            ->withSuccess('Content updated successfully.');
+            ->withSuccess('Advertisement updated successfully.');
     }
+
+     //Basic information
+     public function basicInfo()
+     {
+         $data['site_name'] = Content::query()
+             ->key(Content::KEY_SITE_NAME_PRIMARY)
+             ->first()
+             ?->value;
+
+         $data['email'] = Content::query()
+             ->key(Content::KEY_EMAIL_ADDRESS_PRIMARY)
+             ->first()
+             ?->value;
+
+         $data['phone'] = Content::query()
+             ->key(Content::KEY_PHONE_NUMBER_PRIMARY)
+             ->first()
+             ?->value;
+
+
+
+
+
+         $data['logo'] = Content::query()
+             ->key(Content::KEY_LOGO)
+             ->first()
+             ?->value;
+
+         return view('setting::setting.basic.basic-information')->with($data);
+        //  return view('settings.basic.basic-info')->with($data);
+     }
+
+     public function basicInfoStore(Request $request)
+     {
+         // return $request->all();
+         $request->validate([
+             'site_name' => 'nullable|string',
+             'email' => 'nullable|email',
+             'phone' => 'nullable|string',
+             'whatsapp_number' => 'nullable|string',
+             'booking_sending_emails' => 'nullable|string',
+             'logo'=> 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_SITE_NAME_PRIMARY,
+         ], [
+             'value' => $request->site_name,
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_EMAIL_ADDRESS_PRIMARY,
+         ], [
+             'value' => $request->email,
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_PHONE_NUMBER_PRIMARY,
+         ], [
+             'value' => $request->phone,
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_WHATSAPP_NUMBER,
+         ], [
+             'value' => $request->whatsapp_number,
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_BOOKING_SENDING_EMAILS,
+         ], [
+             'value' => $request->booking_sending_emails,
+         ]);
+
+         if ($request->hasFile('logo')) {
+
+             $logo = $request->file('logo')->store('images/logo');
+             Content::updateOrCreate([
+                 'key' => Content::KEY_LOGO,
+             ], [
+                 'value' => $logo,
+             ]);
+
+         }
+
+         return redirect()
+             ->back()
+             ->withSuccess('Content updated successfully.');
+     }
+
 }
