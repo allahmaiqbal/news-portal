@@ -12,8 +12,10 @@ use Modules\Setting\Entities\Setting;
 use Modules\Category\Entities\Category;
 use Illuminate\Contracts\Support\Renderable;
 
+
 class DashboardController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -150,10 +152,13 @@ class DashboardController extends Controller
          ->firstOrFail();
         $post->post_count++;
         $post->save();
-        //social medial link share
-        // $shareLinks=\Share::page(
-        //     url('/news'),
-        //     'here ')
+        // social medial link share
+        // $shareLinks = Share::page('http://example.com', 'My Page Title')
+        // // $shareLinks=Share::page(
+        // //     // url('/news'),
+        // //     // 'here '
+        // //     URL::to('/news')
+        // //     )
         // ->facebook()
         // ->linkedin()
         // ->whatsapp()
