@@ -27,4 +27,6 @@ Route::prefix('dashboard')
         Route::post('/delete-image/{id}', [PostController::class, 'deleteImage'])->name('deleteImage');
         //slug
         Route::get('posts/check_slug/{title}', [PostController::class, 'checkSlug'])->name('posts.check_slug');
+        //social media share link controller
+        Route::get('/posts/{id}', [SocialShareController::class, 'share'])->name('share');
     });

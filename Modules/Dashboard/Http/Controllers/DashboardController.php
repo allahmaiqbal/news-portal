@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Http\Controllers;
 
+use Share;
 use Illuminate\Http\Request;
 use Modules\Page\Entities\Page;
 use Modules\Posts\Entities\Post;
@@ -145,14 +146,26 @@ class DashboardController extends Controller
 
     public function newsPage($id){
         // return $slug;
-     $post = Post::where('slug', $id)
+        $post = Post::where('slug', $id)
          ->firstOrFail();
         $post->post_count++;
         $post->save();
-
-        //advertisement
+        //social medial link share
+        // $shareLinks=\Share::page(
+        //     url('/news'),
+        //     'here ')
+        // ->facebook()
+        // ->linkedin()
+        // ->whatsapp()
+        // ->twitter();
+        // //advertisement
         $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
-        return view('dashboard::post.news-single-page',compact('post','advertiseFourUrl'));
+        return view('dashboard::post.news-single-page',
+        compact(
+            'post',
+            'advertiseFourUrl',
+            // 'shareLinks'
+        ));
     }
 
 

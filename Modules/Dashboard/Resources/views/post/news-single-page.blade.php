@@ -3,6 +3,10 @@
 @section('title', 'সম্পূর্ণ নিউজ')
 @section('content')
  <!-- single-news-area start -->
+ @push('style')
+
+
+ @endpush
  <section class="single-news">
     <div class="container py-5">
         <div class="row">
@@ -111,11 +115,11 @@
                 </div>
             </div>
         </div>
-        <div class="share-in-social d-flex align-items-center mb-2 "  >
-            <h4 class="share mt-2 me-3 d-print-none" >
+        {{-- <div class="share-in-social d-flex justify-content-center align-items-center">
+            <h4 class="share mt-2 me-3">
                 শেয়ার করুন :
             </h4>
-            <div class="social d-print-none">
+            <div class="social">
                 <a href="#" target="_blank">
                     <img src="{{ asset('images/social/facebook-logo.svg') }}" alt="">
                 </a>
@@ -134,10 +138,19 @@
                 <a href="#" target="_blank">
                     <img src="{{ asset('images/social/youtube-logo.svg') }}" alt="">
                 </a>
-
-
             </div>
-        </div>
+        </div> --}}
+
+        {{-- <div class="share-in-social">
+            <h5 class="share mt-2 me-3 d-print-none" >
+                শেয়ার করুন :
+            </h5>
+             <p >
+                 {!! $shareLinks !!}
+             </p>
+        </div> --}}
+
+
         <button onclick="window.print()" class="print text-capitalize">
             print
         </button>
