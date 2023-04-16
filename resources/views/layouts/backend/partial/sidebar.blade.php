@@ -172,6 +172,29 @@
             </ul>
         </li>
 
+        <li class="accordion-item">
+            <a href="#" class="accordion-button {{ $currentRoute == 'video' ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" data-bs-target="#video"
+                aria-expanded="{{ $currentRoute == 'video' ? 'true' : 'false' }}"
+                aria-controls="video">
+                <i class="bi bi-file-earmark-text"></i>
+                <span class="me-auto">Vidos section</span>
+            </a>
+
+            <ul id="video"
+                class="accordion-collapse collapse {{ $currentRoute == 'video' ? 'show' : '' }}"
+                data-bs-parent="#video">
+                <li>
+                    <a href="{{ route('video.create') }}"
+                        class="nav-link {{ $currentRouteName == 'video.index'|| $currentRouteName == 'video.create' || $currentRouteName == 'video.edit'  ? 'active' : '' }}"
+                        class="nav-link"><span>video</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </li>
+
         <div class="d-grid gap-2" style="margin-top: 20px">
             <a href="{{ route('dashboard') }}" target="_blank" class="btn custom btn-outline-warning btn-sm">Visit website</a>
         </div>

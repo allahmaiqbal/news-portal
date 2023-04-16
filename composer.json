@@ -15,6 +15,7 @@
         "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^v9.22.1",
         "laravel/sanctum": "^2.14.1",
+        "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
         "nwidart/laravel-modules": "^9.0",
         "spatie/laravel-medialibrary": "10.0.0",

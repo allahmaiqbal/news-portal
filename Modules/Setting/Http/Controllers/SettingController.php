@@ -213,6 +213,16 @@ class SettingController extends Controller
      //Basic information
      public function basicInfo()
      {
+        $data['chief_editor'] = Content::query()
+        ->key(Content::KEY_CHIEF_EDITOR)
+        ->first()
+        ?->value;
+
+       $data['managing_director'] = Content::query()
+        ->key(Content::KEY_MANAGING_DIRECTOR)
+        ->first()
+        ?->value;
+
          $data['site_name'] = Content::query()
              ->key(Content::KEY_SITE_NAME_PRIMARY)
              ->first()
@@ -228,14 +238,29 @@ class SettingController extends Controller
              ->first()
              ?->value;
 
-
-
-
-
-         $data['logo'] = Content::query()
-             ->key(Content::KEY_LOGO)
+         $data['address'] = Content::query()
+             ->key(Content::KEY_ADDRESS)
              ->first()
              ?->value;
+
+        $data['chief_editor'] = Content::query()
+             ->key(Content::KEY_CHIEF_EDITOR)
+             ->first()
+             ?->value;
+
+        $data['managing_director'] = Content::query()
+             ->key(Content::KEY_MANAGING_DIRECTOR)
+             ->first()
+             ?->value;
+
+
+
+
+
+        //  $data['logo'] = Content::query()
+        //      ->key(Content::KEY_LOGO)
+        //      ->first()
+        //      ?->value;
 
          return view('setting::setting.basic.basic-information')->with($data);
         //  return view('settings.basic.basic-info')->with($data);
@@ -245,13 +270,27 @@ class SettingController extends Controller
      {
          // return $request->all();
          $request->validate([
-             'site_name' => 'nullable|string',
-             'email' => 'nullable|email',
-             'phone' => 'nullable|string',
-            //  'whatsapp_number' => 'nullable|string',
-            //  'booking_sending_emails' => 'nullable|string',
+
+            'chief_editor' => 'nullable|string',
+            'managing_director' => 'nullable|string',
+            'site_name' => 'nullable|string',
+            'email' => 'nullable|email',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string',
             //  'logo'=> 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
          ]);
+
+         Content::updateOrCreate([
+            'key' => Content::KEY_MANAGING_DIRECTOR,
+        ], [
+            'value' => $request->managing_director,
+        ]);
+
+        Content::updateOrCreate([
+            'key' => Content::KEY_CHIEF_EDITOR,
+        ], [
+            'value' => $request->chief_editor,
+        ]);
 
          Content::updateOrCreate([
              'key' => Content::KEY_SITE_NAME_PRIMARY,
@@ -271,11 +310,13 @@ class SettingController extends Controller
              'value' => $request->phone,
          ]);
 
-        //  Content::updateOrCreate([
-        //      'key' => Content::KEY_WHATSAPP_NUMBER,
-        //  ], [
-        //      'value' => $request->whatsapp_number,
-        //  ]);
+         Content::updateOrCreate([
+             'key' => Content::KEY_ADDRESS,
+         ], [
+             'value' => $request->address,
+         ]);
+
+
 
         //  Content::updateOrCreate([
         //      'key' => Content::KEY_BOOKING_SENDING_EMAILS,
@@ -293,6 +334,65 @@ class SettingController extends Controller
         //      ]);
 
         //  }
+
+         return redirect()
+             ->back()
+             ->withSuccess('Content updated successfully.');
+     }
+
+     public function footerPages(){
+        $data['contact_us'] = Content::query()
+        ->key(Content::kEY_CONTACT_US)
+        ->first()
+        ?->value;
+
+        $data['about_us'] = Content::query()
+        ->key(Content::KEY_TERM_CONDITION_)
+        ->first()
+        ?->value;
+
+       $data['about_us'] = Content::query()
+        ->key(Content::KEY_ABOUT_US)
+        ->first()
+        ?->value;
+
+     }
+
+     public function footerPageStore(Request $request)
+     {
+         $request->validate([
+
+            'contact_us' => 'nullable|string',
+            'about_us' => 'nullable|string',
+            'term_condition' => 'nullable|string',
+
+         ]);
+
+         Content::updateOrCreate([
+            'key' => Content::kEY_CONTACT_US,
+        ], [
+            'value' => $request->contact_us,
+        ]);
+
+        Content::updateOrCreate([
+            'key' => Content::KEY_ABOUT_US,
+        ], [
+            'value' => $request->about_us,
+        ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_TERM_CONDITION_,
+         ], [
+             'value' => $request->term_condition,
+         ]);
+
+         Content::updateOrCreate([
+             'key' => Content::KEY_EMAIL_ADDRESS_PRIMARY,
+         ], [
+             'value' => $request->email,
+         ]);
+
+
 
          return redirect()
              ->back()

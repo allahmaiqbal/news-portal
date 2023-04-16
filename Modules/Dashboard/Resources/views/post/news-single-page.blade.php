@@ -10,9 +10,9 @@
  <section class="single-news">
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-8 mb-3"  class="d-print-none">
-                <div class="ads mb-3">
-                    <img src="#" alt="">
+            <div class="col-lg-8 mb-3">
+                <div class="ads mb-3 d-print-none">
+                    <img src="https://placehold.co/767x100/png" alt="">
                 </div>
                 <p class="category-title d-block fs-5 fw-normal pb-2 mb-4"  >
                     সম্পূর্ণ নিউজ
@@ -70,9 +70,14 @@
                 </div>
             </div>
             <div class="col-lg-4" >
-                <a class="d-print-none" href="#" class="category-title d-block fs-5 fw-normal pb-2 mb-4">
+                <a href="#" class="category-title d-block fs-5 fw-normal pb-2 mb-4 d-print-none">
                     সাম্প্রতিক খবর
                 </a>
+                <div class="button mb-3"  >
+                    <div class="ads mb-3 d-print-none">
+                        <img src="https://placehold.co/350x230/png" alt="">
+                    </div>
+                </div>
               @foreach ($latestPosts->take(5) as $post )
                 <a class="d-print-none" href="{{ route('news.pages',$post->slug) }}" class="d-block mb-3">
                     <figure class="d-flex shadow overflow-hidden pe-2">
@@ -100,12 +105,11 @@
               @endforeach
 
                 <div class="button mb-3"  >
-                    <a  class="d-print-none"  href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow">
+                    <a href="{{ route('breaking-news.pages') }}" class="btn btn-outline-danger rounded-0 w-100 mt-3 shadow d-print-none">
                         আরও সাম্প্রতিক খবর
                     </a>
                 </div>
-
-                <iframe class="fb-page mb-3 d-print-none" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                {{-- <iframe class="fb-page mb-3 d-print-none" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> --}}
 
                 <div class="d-print-none"  class="ads mb-3">
                     @if ($advertiseFourUrl)
@@ -141,14 +145,14 @@
             </div>
         </div> --}}
 
-        {{-- <div class="share-in-social">
+        <div class="share-in-social">
             <h5 class="share mt-2 me-3 d-print-none" >
                 শেয়ার করুন :
             </h5>
              <p >
                  {!! $shareLinks !!}
              </p>
-        </div> --}}
+        </div>
 
 
         <button onclick="window.print()" class="print text-capitalize">

@@ -12,7 +12,7 @@
 */
 
 use Modules\Dashboard\Http\Controllers\DashboardController;
-
+use Modules\Dashboard\Http\Controllers\FooterPageController;
 
 // dashboard
 // Route::get('dashboard', [DashboardController::class, 'index'])
@@ -31,4 +31,9 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
      Route::get('view-news',[DashboardController::class,'viewNews'])->name('view-news.pages');
      Route::get('search',[DashboardController::class,'searchNews'])->name('search-news.pages');
      Route::get('live-tv',[DashboardController::class,'liveTv'])->name('live-tv.pages');
+     //footer pages
+     Route::get('about-us',[FooterPageController::class,'aboutUs'])->name('about-us.page');
+     Route::get('contact-us',[FooterPageController::class,'contactUs'])->name('contact-us.page');
+     Route::get('terms',[FooterPageController::class,'terms'])->name('terms.page');
+
     });

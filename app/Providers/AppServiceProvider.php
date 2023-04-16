@@ -39,7 +39,16 @@ class AppServiceProvider extends ServiceProvider
         $latestPosts = Post::latest('published_at')->whereNotNull('published_at')->select('id', 'category_id', 'published_at', 'title', 'slug', 'content','post_count')->get();
         view()->share('latestPosts', $latestPosts);
        //basic information
-          $sideName = Content::where('key', Content::KEY_SITE_NAME_PRIMARY
+
+            $managingDirector = Content::where('key', Content::KEY_MANAGING_DIRECTOR
+            )->value('value');
+            view()->share('managingDirector', $managingDirector);
+
+            $chiefEditor = Content::where('key', Content::KEY_CHIEF_EDITOR
+            )->value('value');
+            view()->share('chiefEditor', $chiefEditor);
+
+           $sideName = Content::where('key', Content::KEY_SITE_NAME_PRIMARY
             )->value('value');
             view()->share('sideName', $sideName);
 
@@ -50,6 +59,10 @@ class AppServiceProvider extends ServiceProvider
             $mobileNumber= Content::where('key', Content::KEY_PHONE_NUMBER_PRIMARY
             )->value('value');
             view()->share('mobileNumber', $mobileNumber);
+
+            $address= Content::where('key', Content::KEY_ADDRESS
+            )->value('value');
+            view()->share('address', $address);
 
         Paginator::useBootstrapFive();
     }

@@ -13,7 +13,7 @@
                             প্রধান সম্পাদকঃ
                         </span>
                         <span>
-                            আনোয়ার সাদত জাহাঙ্গীর।
+                           {{ $chiefEditor }}
                         </span>
                     </p>
                     <p>
@@ -21,7 +21,7 @@
                             ব্যবস্থাপনা পরিচালকঃ
                         </span>
                         <span>
-                            মোঃ শাহ আলম।
+                            {{ $managingDirector }}
                         </span>
                     </p>
                 </div>
@@ -31,33 +31,13 @@
                         <i class="fa-solid fa-location-dot me-2"></i>
                         ঠিকানাঃ
                     </h5>
+                    @foreach (explode('|', $address) as $email )
                     <p class="mb-2">
                         <span class="title fw-medium">
-                            প্রধান অফিস
+                        {{ $email }}
                         </span>
-                        <span>
-                            ৩/১৬ মুক্তিযোদ্ধো কমপ্লেক্স,
-                        </span>
-
                     </p>
-
-                    <p class="mb-2">
-                        চিড়িয়াখানা রোড,মিরপুর ঢাকা-১২১৬
-                    </p>
-
-                    <p class="mb-2">
-                        <span class="title fw-medium">
-                            শাখা অফিস,
-                        </span>
-                        <span>
-                            দরগা মহল্লা রোড,
-                        </span>
-
-                    </p>
-
-                    <p class="mb-2">
-                        ত্রিশাল পৌরসভা,, ময়মনসিংহ
-                    </p>
+                    @endforeach
                 </div>
 
                 <div class="col-md-4 mb-4 d-print-none">
@@ -112,23 +92,23 @@
         <div class="secondary-footer d-flex align-items-center justify-content-between ">
             <ul class="footer-nav d-flex flex-row flex-wrap d-print-none">
                 <li class="nav-item mb-0">
-                    <a class="nav-link" href="/about.html">
+                    <a class="nav-link" href="{{ route('about-us.page') }}">
                         আমাদের সম্পর্কে
                     </a>
                 </li>
                 <li class="nav-item mb-0">
-                    <a class="nav-link" href="/terms.html">
+                    <a class="nav-link" href="{{ route('terms.page') }}">
                         গোপনীয়তা নীতি
                     </a>
                 </li>
                 <li class="nav-item mb-0">
-                    <a class="nav-link" href="/contact.html">
+                    <a class="nav-link" href="{{ route('contact-us.page') }}">
                         যোগাযোগ
                     </a>
                 </li>
             </ul>
 
-            <p class="d-print-none" >&copy; 2023 News Portal. All rights reserved.</p>
+            <p class="d-print-none" >&copy; 2023 rongdhonu.tv. All rights reserved.</p>
         </div>
 
     </div>

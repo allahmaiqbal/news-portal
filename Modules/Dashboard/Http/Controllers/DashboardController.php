@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Page\Entities\Page;
 use Modules\Posts\Entities\Post;
 use Modules\Users\Entities\User;
+use Modules\Video\Entities\Video;
 use Illuminate\Routing\Controller;
 use Modules\Setting\Entities\Setting;
 use Modules\Category\Entities\Category;
@@ -109,6 +110,9 @@ class DashboardController extends Controller
         $advertiseTwoUrl = Setting::where('key', Setting::KEY_ADVERTISE_TWO)->value('value');
         $advertiseThreeUrl = Setting::where('key', Setting::KEY_ADVERTISE_THREE)->value('value');
 
+        //video
+       $videos = Video::all();
+
      return view('dashboard::index',compact('posts',
         'viewPosts',
         'bangladesh_posts',
@@ -120,6 +124,7 @@ class DashboardController extends Controller
         'advertiseOneUrl',
         'advertiseTwoUrl',
         'advertiseThreeUrl',
+        'videos'
     ));
     }
 
@@ -153,23 +158,23 @@ class DashboardController extends Controller
         $post->post_count++;
         $post->save();
         // social medial link share
-        // $shareLinks = Share::page('http://example.com', 'My Page Title')
-        // // $shareLinks=Share::page(
-        // //     // url('/news'),
-        // //     // 'here '
-        // //     URL::to('/news')
-        // //     )
-        // ->facebook()
-        // ->linkedin()
-        // ->whatsapp()
-        // ->twitter();
+        $shareLinks = Share::page('http://example.com', 'My Page Title')
+        // $shareLinks=Share::page(
+        //     // url('/news'),
+        //     // 'here '
+        //     URL::to('/news')
+        //     )
+        ->facebook()
+        ->linkedin()
+        ->whatsapp()
+        ->twitter();
         // //advertisement
         $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
         return view('dashboard::post.news-single-page',
         compact(
             'post',
             'advertiseFourUrl',
-            // 'shareLinks'
+            'shareLinks'
         ));
     }
 

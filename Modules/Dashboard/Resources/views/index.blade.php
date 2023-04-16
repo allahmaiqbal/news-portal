@@ -173,7 +173,7 @@
             <div class="row g-3">
                 @foreach ($bangladesh_posts->take(1) as $post )
                     <div class="col-lg-6">
-                        <a href="">
+                        <a href="{{ route('news.pages',$post->slug) }}">
 
                             <div class="card main-news border-0 rounded-0">
                                 <div class="card-img rounded-0">
@@ -204,10 +204,9 @@
 
                 <div class="col-lg-6">
                     <div class="row g-3">
-
-                    @foreach ($bangladesh_posts->take(4) as $post )
+                    @foreach ($bangladesh_posts->take(3) as $post )
                        <div class="col-6">
-                        <a href="#">
+                        <a href="{{ route('news.pages',$post->slug) }}">
                             <div class="card news h-100 rounded-0 border-0">
                                 <div class="card-img rounded-0">
                                     <img src="{{ asset( $post->getFirstMediaUrl(\Modules\Posts\Entities\Post::MEDIA_COLLECTION_AVATAR)) }}" alt="" class="card-img-top rounded-0">
@@ -233,6 +232,12 @@
                         </a>
                        </div>
                     @endforeach
+                    <div class="col-6">
+                        <div class="d-print-none"  class="ads mb-3">
+                            <img src="https://placehold.co/267x600/png" alt="">
+                        </div>
+
+                     </div>
                 </div>
             </div>
         </div>

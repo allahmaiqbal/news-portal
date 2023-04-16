@@ -17,5 +17,6 @@
     "Reporter": true,
     "Advertisement": true,
     "Setting": true,
-    "Content": true
+    "Content": true,
+    "Video": true
 }
