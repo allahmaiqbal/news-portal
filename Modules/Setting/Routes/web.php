@@ -27,8 +27,8 @@ Route::prefix('backend')
         Route::post('basic-info', [SettingController::class, 'basicInfoStore'])->name('basic-info.store');
 
         //footer pages
-        Route::get('footer-page', [SettingController::class, 'footerPage'])->name('footer.page');
-        Route::post('footer-page', [SettingController::class, 'footerPageStore'])->name('footer.store');
+        Route::get('footer', [SettingController::class, 'footerPage'])->name('footer.page');
+        Route::post('footer', [SettingController::class, 'footerPageStore'])->name('footer.store');
 
 
     });

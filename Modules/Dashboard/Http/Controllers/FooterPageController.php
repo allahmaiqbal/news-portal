@@ -2,9 +2,11 @@
 
 namespace Modules\Dashboard\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Setting\Entities\Setting;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Content\Entities\Content;
 
 class FooterPageController extends Controller
 {
@@ -12,21 +14,33 @@ class FooterPageController extends Controller
    *
    */
     public function aboutUs(){
-        return view('dashboard::post.about-us');
+        $aboutUs = Content::where('key', Content::KEY_ABOUT_US)->value('value');
+        return view('dashboard::post.about-us',compact('aboutUs'));
     }
 
      /**
      *
      */
-    public function contactUS(){
-        return view('dashboard::post.contact-us');
+    public function contactUs(){
+        $site = Content::where('key', Content::KEY_SITE_NAME_PRIMARY)->value('value');
+        $email = Content::where('key', Content::KEY_EMAIL_ADDRESS_PRIMARY)->value('value');
+        $phone = Content::where('key', Content::KEY_PHONE_NUMBER_PRIMARY)->value('value');
+        $address = Content::where('key', Content::KEY_ADDRESS)->value('value');
+        return view('dashboard::post.contact-us',
+        compact(
+            'site',
+            'email',
+            'phone',
+            'address',
+        ));
     }
 
         /**
      *
      */
     public function terms(){
-        return view('dashboard::post.terms-condition');
+     $termsCondition = Content::where('key', Content::KEY_TERM_CONDITION)->value('value');
+        return view('dashboard::post.terms-condition',compact('termsCondition'));
     }
     /**
      * Display a listing of the resource.

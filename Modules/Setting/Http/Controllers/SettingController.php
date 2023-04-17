@@ -340,14 +340,14 @@ class SettingController extends Controller
              ->withSuccess('Content updated successfully.');
      }
 
-     public function footerPages(){
-        $data['contact_us'] = Content::query()
-        ->key(Content::kEY_CONTACT_US)
-        ->first()
-        ?->value;
+     public function footerPage(){
+        // $data['contact_us'] = Content::query()
+        // ->key(Content::kEY_CONTACT_US)
+        // ->first()
+        // ?->value;
 
-        $data['about_us'] = Content::query()
-        ->key(Content::KEY_TERM_CONDITION_)
+        $data['term'] = Content::query()
+        ->key(Content::KEY_TERM_CONDITION)
         ->first()
         ?->value;
 
@@ -356,23 +356,19 @@ class SettingController extends Controller
         ->first()
         ?->value;
 
+        return view('setting::setting.footer-page.footer')->with($data);
+
      }
 
      public function footerPageStore(Request $request)
      {
+        // return $request->all();
          $request->validate([
 
-            'contact_us' => 'nullable|string',
             'about_us' => 'nullable|string',
             'term_condition' => 'nullable|string',
 
          ]);
-
-         Content::updateOrCreate([
-            'key' => Content::kEY_CONTACT_US,
-        ], [
-            'value' => $request->contact_us,
-        ]);
 
         Content::updateOrCreate([
             'key' => Content::KEY_ABOUT_US,
@@ -381,17 +377,10 @@ class SettingController extends Controller
         ]);
 
          Content::updateOrCreate([
-             'key' => Content::KEY_TERM_CONDITION_,
+             'key' => Content::KEY_TERM_CONDITION,
          ], [
-             'value' => $request->term_condition,
+             'value' => $request->term,
          ]);
-
-         Content::updateOrCreate([
-             'key' => Content::KEY_EMAIL_ADDRESS_PRIMARY,
-         ], [
-             'value' => $request->email,
-         ]);
-
 
 
          return redirect()

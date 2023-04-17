@@ -177,7 +177,7 @@
                 data-bs-toggle="collapse" data-bs-target="#video"
                 aria-expanded="{{ $currentRoute == 'video' ? 'true' : 'false' }}"
                 aria-controls="video">
-                <i class="bi bi-file-earmark-text"></i>
+                <i class="bi bi-play-btn"></i>
                 <span class="me-auto">Vidos section</span>
             </a>
 
@@ -188,6 +188,51 @@
                     <a href="{{ route('video.create') }}"
                         class="nav-link {{ $currentRouteName == 'video.index'|| $currentRouteName == 'video.create' || $currentRouteName == 'video.edit'  ? 'active' : '' }}"
                         class="nav-link"><span>video</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </li>
+
+        {{-- <li class="accordion-item">
+            <a href="#" class="accordion-button {{ $currentRoute == 'video' ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" data-bs-target="#video"
+                aria-expanded="{{ $currentRoute == 'video' ? 'true' : 'false' }}"
+                aria-controls="video">
+                <i class="bi bi-menu-up"></i>
+                <span class="me-auto">Footer Pages</span>
+            </a>
+
+            <ul id="video"
+                class="accordion-collapse collapse {{ $currentRoute == 'video' ? 'show' : '' }}"
+                data-bs-parent="#video">
+                <li>
+                    <a href="{{ route('video.create') }}"
+                        class="nav-link {{ $currentRouteName == 'video.index'|| $currentRouteName == 'video.create' || $currentRouteName == 'video.edit'  ? 'active' : '' }}"
+                        class="nav-link"><span>video</span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </li> --}}
+        <li class="accordion-item">
+            <a href="#" class="accordion-button {{ $currentRoute == 'footer' ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" data-bs-target="#footer"
+                aria-expanded="{{ $currentRoute == 'footer' ? 'true' : 'false' }}"
+                aria-controls="footer">
+                <i class="bi bi-file-earmark-text"></i>
+                <span class="me-auto">Footer pages</span>
+            </a>
+
+            <ul id="footer"
+                class="accordion-collapse collapse {{ $currentRoute == 'footer' ? 'show' : '' }}"
+                data-bs-parent="#footer">
+                <li>
+                    <a href="{{ route('footer.page') }}"
+                        class="nav-link {{ $currentRouteName == 'footer.page'  ? 'active' : '' }}"
+                        class="nav-link"><span>Content</span>
                     </a>
 
                 </li>

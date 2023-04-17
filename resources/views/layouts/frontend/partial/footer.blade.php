@@ -4,7 +4,7 @@
         <div class="primary-footer">
             <div class="row">
                 <div class="col-md-4 mb-4 d-print-none">
-                    <img class="footer-logo mb-2" src="./resources/statics/frontend/img/logo.png" alt="">
+                    <img class="footer-logo mb-2" src="{{ asset('images/logo.png') }}" alt="">
                     <p class="short-desc mb-3">
                         সত্য সংবাদ প্রকাশে সাহসী। তথ্য দিন সাথে থাকুন
                     </p>

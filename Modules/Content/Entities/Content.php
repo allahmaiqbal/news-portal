@@ -26,7 +26,7 @@ class Content extends Model
     const KEY_LOGO = 'logo';
     //footer page
     const KEY_ABOUT_US= 'about_us';
-    const KEY_TERM_CONDITION_= 'term_condition';
+    const KEY_TERM_CONDITION= 'term_condition';
     const kEY_CONTACT_US  = 'contact_us';
 
 

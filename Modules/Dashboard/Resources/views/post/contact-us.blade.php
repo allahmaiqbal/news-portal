@@ -8,8 +8,15 @@
             <h1 class="section-header fw-normal border-bottom border-danger text-capitalize pb-2 mb-4">
                 contact address
             </h1>
+            @foreach (explode('|', $address) as $address )
+            <p class="mb-2">
+                <span class="title fw-medium">
+                {{ $address }}
+                </span>
+            </p>
+            @endforeach
 
-            <p class="mb-3">
+            {{-- <p class="mb-3">
                 <span class="title fw-medium">
                     প্রধান অফিস
                 </span>
@@ -35,14 +42,14 @@
 
             <p class="mb-3">
                 ত্রিশাল পৌরসভা,, ময়মনসিংহ
-            </p>
+            </p> --}}
 
             <p class="mb-3">
                 <span class="title fw-medium">
                     ফোনঃ
                 </span>
                 <a href="tel:+৮৮০১৭১৫৮১৮৭৮৩">
-                    +৮৮০১৭১৫৮১৮৭৮৩
+                  {{ $phone }}
                 </a>
             </p>
 
@@ -51,7 +58,7 @@
                     ইমেইলঃ
                 </span>
                 <a href="email:example@gmail.com">
-                    example@gmail.com
+                   {{ $email }}
                 </a>
             </p>
 
@@ -60,7 +67,7 @@
                     ওয়েবসাইটঃ
                 </span>
                 <a href="rongdhonutvnews24.com" target="_blank">
-                    rongdhonutvnews24.com
+                  {{ $site }}
                 </a>
             </p>
         </div>
