@@ -21,6 +21,8 @@ class Setting extends Model
     const KEY_ADVERTISE_FOUR          = 'advertise_4_img';
     const KEY_ADVERTISE_FIVE          = 'advertise_5_img';
     const KEY_ADVERTISE_SIX          = 'advertise_6_img';
+    const KEY_ADVERTISE_SEVEN          = 'advertise_7_img';
+    const KEY_ADVERTISE_EIGHT          = 'advertise_8_img';
 
 
     public function scopeKey(Builder $query, $key): Builder

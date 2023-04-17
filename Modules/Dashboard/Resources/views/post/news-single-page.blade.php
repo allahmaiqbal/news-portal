@@ -12,7 +12,10 @@
         <div class="row">
             <div class="col-lg-8 mb-3">
                 <div class="ads mb-3 d-print-none">
-                    <img src="https://placehold.co/767x100/png" alt="">
+                    @if ($advertiseFiveUrl)
+                    <img src="{{ asset('storage/' . $advertiseFiveUrl) }}" alt="Advertise 4">
+                   @endif
+                    {{-- <img src="https://placehold.co/767x100/png" alt=""> --}}
                 </div>
                 <p class="category-title d-block fs-5 fw-normal pb-2 mb-4"  >
                     সম্পূর্ণ নিউজ
@@ -75,7 +78,10 @@
                 </a>
                 <div class="button mb-3"  >
                     <div class="ads mb-3 d-print-none">
-                        <img src="https://placehold.co/350x230/png" alt="">
+                        {{-- <img src="https://placehold.co/350x230/png" alt=""> --}}
+                        @if ($advertiseSixUrl)
+                        <img src="{{ asset('storage/' . $advertiseSixUrl) }}" alt="Advertise 4">
+                       @endif
                     </div>
                 </div>
               @foreach ($latestPosts->take(5) as $post )
@@ -112,8 +118,8 @@
                 {{-- <iframe class="fb-page mb-3 d-print-none" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemaxsop&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> --}}
 
                 <div class="d-print-none"  class="ads mb-3">
-                    @if ($advertiseFourUrl)
-                    <img src="{{ asset('storage/' . $advertiseFourUrl) }}" alt="Advertise 4">
+                    @if ($advertiseSevenUrl)
+                    <img src="{{ asset('storage/' . $advertiseSevenUrl) }}" alt="Advertise 4">
                    @endif
                     {{-- <img src="https://placehold.co/300x600/png" alt=""> --}}
                 </div>

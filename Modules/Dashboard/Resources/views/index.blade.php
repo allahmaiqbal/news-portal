@@ -234,9 +234,11 @@
                     @endforeach
                     <div class="col-6">
                         <div class="d-print-none"  class="ads mb-3">
-                            <img src="https://placehold.co/267x600/png" alt="">
+                            @if ($advertiseFourUrl)
+                            <img src="{{ asset('storage/' . $advertiseFourUrl) }}" alt="Advertise 4">
+                           @endif
+                            {{-- <img src="https://placehold.co/267x500/png" alt=""> --}}
                         </div>
-
                      </div>
                 </div>
             </div>

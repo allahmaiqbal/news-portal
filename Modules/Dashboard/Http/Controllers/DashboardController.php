@@ -109,6 +109,7 @@ class DashboardController extends Controller
         $advertiseOneUrl = Setting::where('key', Setting::KEY_ADVERTISE_ONE)->value('value');
         $advertiseTwoUrl = Setting::where('key', Setting::KEY_ADVERTISE_TWO)->value('value');
         $advertiseThreeUrl = Setting::where('key', Setting::KEY_ADVERTISE_THREE)->value('value');
+        $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
 
         //video
        $videos = Video::all();
@@ -124,6 +125,7 @@ class DashboardController extends Controller
         'advertiseOneUrl',
         'advertiseTwoUrl',
         'advertiseThreeUrl',
+        'advertiseFourUrl',
         'videos'
     ));
     }
@@ -169,11 +171,15 @@ class DashboardController extends Controller
         ->whatsapp()
         ->twitter();
         // //advertisement
-        $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
+        $advertiseFiveUrl = Setting::where('key', Setting::KEY_ADVERTISE_FIVE)->value('value');
+        $advertiseSixUrl = Setting::where('key', Setting::KEY_ADVERTISE_SIX)->value('value');
+        $advertiseSevenUrl = Setting::where('key', Setting::KEY_ADVERTISE_SEVEN)->value('value');
         return view('dashboard::post.news-single-page',
         compact(
             'post',
-            'advertiseFourUrl',
+            'advertiseFiveUrl',
+            'advertiseSixUrl',
+            'advertiseSevenUrl',
             'shareLinks'
         ));
     }

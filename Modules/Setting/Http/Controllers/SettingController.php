@@ -109,6 +109,16 @@ class SettingController extends Controller
         ->key(Setting::KEY_ADVERTISE_FIVE)
         ->first()
         ?->value;
+
+        $data['advertise_6_img'] = Setting::query()
+        ->key(Setting::KEY_ADVERTISE_SIX)
+        ->first()
+        ?->value;
+
+        $data['advertise_7_img'] = Setting::query()
+        ->key(Setting::KEY_ADVERTISE_SEVEN)
+        ->first()
+        ?->value;
     //  return $data;
     return view('advertisement::index')->with($data);
     }
@@ -122,6 +132,9 @@ class SettingController extends Controller
             'advertise_3_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'advertise_4_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'advertise_5_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'advertise_6_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'advertise_7_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'advertise_8_img' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
         //file upload
@@ -202,6 +215,38 @@ class SettingController extends Controller
                 'key' => Setting::KEY_ADVERTISE_FIVE,
             ], [
                 'value' => $advertise_5_img,
+            ]);
+        }
+
+        if ($request->hasFile('advertise_6_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_SIX)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
+
+            $advertise_6_img = $request->file('advertise_6_img')->store('images/advertise');
+            Setting::updateOrCreate([
+                'key' => Setting::KEY_ADVERTISE_SIX,
+            ], [
+                'value' => $advertise_6_img,
+            ]);
+        }
+
+        if ($request->hasFile('advertise_7_img')) {
+
+            // delete old image from storage
+            $oldImage = Setting::where('key', Setting::KEY_ADVERTISE_SEVEN)->value('value');
+            if ($oldImage) {
+                Storage::delete($oldImage);
+            }
+
+            $advertise_7_img = $request->file('advertise_7_img')->store('images/advertise');
+            Setting::updateOrCreate([
+                'key' => Setting::KEY_ADVERTISE_SEVEN,
+            ], [
+                'value' => $advertise_7_img,
             ]);
         }
 

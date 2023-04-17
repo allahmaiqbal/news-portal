@@ -57,31 +57,53 @@
                         </x-forms.label>
                         <x-forms.input type="file" name="advertise_3_img" id="advertise_3_img"  />
                     </div>
+
+                    <div class="col-4">
+                        @if ($advertise_4_img)
+                        <img class="img-thumbnail" src="{{ Storage::url($advertise_4_img) }}" alt="image" style="width:267xpx; height: 300px;">
+                        @endif
+                        <x-forms.label for="advertise_5_img" required>
+                            Advertise 4 image (267x 600)
+                        </x-forms.label>
+                        <x-forms.input type="file" name="advertise_4_img" id="advertise_4_img"  />
+                    </div>
                </div>
 
                <div class="row mt-4">
                 <h3 class="text-center mb-4">Full news page advertise</h3>
                 <div class="col-4">
-                    @if ($advertise_4_img)
-                    <img class="img-thumbnail" src="{{ Storage::url($advertise_4_img) }}" alt="image" style="width:200px; height: 300px;">
-                    @endif
-                    <x-forms.label for="advertise_1_img" required>
-                        Advertise 4image (160 x 600)
-                    </x-forms.label>
-                    <x-forms.input type="file" name="advertise_4_img" id="advertise_4_img"  />
-                </div>
-
-                {{-- <div class="col-4">
-
                     @if ($advertise_5_img)
-                    <img class="img-thumbnail" src="{{ Storage::url($advertise_5_img) }}" alt="image" style="max-width: 100px; max-height: 150px;">
+                    <img class="img-thumbnail" src="{{ Storage::url($advertise_5_img) }}" alt="image" style="width:330px; height: 150px;">
                     @endif
-
                     <x-forms.label for="advertise_5_img" required>
-                        Advertise 2 image
+                        Advertise 1 image (767 x 100)
                     </x-forms.label>
                     <x-forms.input type="file" name="advertise_5_img" id="advertise_5_img"  />
-                </div> --}}
+                </div>
+
+                <div class="col-4">
+
+                    @if ($advertise_6_img)
+                    <img class="img-thumbnail" src="{{ Storage::url($advertise_6_img) }}" alt="image" style="max-width: 250px; max-height: 150px;">
+                    @endif
+
+                    <x-forms.label for="advertise_6_img" required>
+                        Advertise 2 image  (350 x 230)
+                    </x-forms.label>
+                    <x-forms.input type="file" name="advertise_6_img" id="advertise_6_img"  />
+                </div>
+
+                <div class="col-4">
+
+                    @if ($advertise_7_img)
+                    <img class="img-thumbnail" src="{{ Storage::url($advertise_7_img) }}" alt="image" style="width: 150px; height: 350px;">
+                    @endif
+
+                    <x-forms.label for="advertise_7_img" required>
+                        Advertise 3 image (600 x 160)
+                    </x-forms.label>
+                    <x-forms.input type="file" name="advertise_7_img" id="advertise_7_img"  />
+                </div>
            </div>
 
             <div class="row mb-3">
