@@ -7,11 +7,11 @@
     <div class="container print-none">
         <ul class="nav nav-tabs mt-2">
             <li class="nav-item">
-                <a class="nav-link">All Records</a>
+                <a class="nav-link" href="{{ route('video.index') }}">All Records</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('video.create') }}">Edit</a>
+                <a class="nav-link active" >Edit</a>
             </li>
         </ul>
     </div>

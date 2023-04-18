@@ -112,7 +112,7 @@ class DashboardController extends Controller
         $advertiseFourUrl = Setting::where('key', Setting::KEY_ADVERTISE_FOUR)->value('value');
 
         //video
-       $videos = Video::all();
+        $videos = Video::latest()->get();
 
      return view('dashboard::index',compact('posts',
         'viewPosts',
@@ -160,7 +160,8 @@ class DashboardController extends Controller
         $post->post_count++;
         $post->save();
         // social medial link share
-        $shareLinks = Share::page('http://example.com', 'My Page Title')
+        // $shareLinks = Share::page('https://rongdhonu.tv/news/' . $post->slug, $post->title)
+        $shareLinks = Share::page('http://rongdhonu.tv/news/'.$post->slug, $post->title)
         // $shareLinks=Share::page(
         //     // url('/news'),
         //     // 'here '
@@ -224,7 +225,8 @@ class DashboardController extends Controller
 
 
     public function liveTv(){
-        return view('dashboard::post.live-tv');
+        $video = Video::latest()->first();
+        return view('dashboard::post.live-tv',compact('video'));
 
     }
 

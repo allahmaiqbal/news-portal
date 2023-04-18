@@ -10,8 +10,9 @@
                 <div class="col-lg-8 col-md-12 mx-auto">
                     <h4 class="header fw-normal mb-4 pb-2">রংধনু টিভি লাইভ</h4>
                     <div class="video">
-                        <iframe class="mb-3" src="https://www.youtube.com/embed/-R7MFU4eepw" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-                        <div class="share-in-social d-flex justify-content-center align-items-center">
+                        {!! $video->link !!}
+                        {{-- <iframe class="mb-3" src="https://www.youtube.com/embed/-R7MFU4eepw" allowfullscreen="allowfullscreen" frameborder="0"></iframe> --}}
+                        {{-- <div class="share-in-social d-flex justify-content-center align-items-center">
                             <h4 class="share mt-2 me-3">
                                 শেয়ার করুন :
                             </h4>
@@ -35,7 +36,7 @@
                                     <img src="{{ asset('images/social/youtube-logo.svg') }}" alt="">
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

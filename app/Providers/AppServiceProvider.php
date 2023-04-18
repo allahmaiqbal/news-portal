@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Modules\Page\Entities\Page;
 use Modules\Posts\Entities\Post;
+use Modules\Video\Entities\Video;
 use Illuminate\Pagination\Paginator;
 use Modules\Content\Entities\Content;
 use Illuminate\Support\ServiceProvider;

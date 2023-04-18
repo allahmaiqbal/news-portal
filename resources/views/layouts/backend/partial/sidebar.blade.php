@@ -9,7 +9,7 @@
     <!-- accordion menu -->
     <!-- aside brand -->
     <div class="aside-brand">
-        <a href="dashboard.html">
+        <a href="{{ route('admin-dashboard.index') }}">
             <img src="{{asset('images/logo.png') }}" height="50px" alt="">
         </a>
     </div>
@@ -25,8 +25,6 @@
                 <span>Dashboard</span>
             </a>
         </li>
-
-
 
         <li class="accordion-item">
             <a href="#" class="accordion-button {{ $currentRoute == 'category' ? '' : 'collapsed' }}"
@@ -185,7 +183,7 @@
                 class="accordion-collapse collapse {{ $currentRoute == 'video' ? 'show' : '' }}"
                 data-bs-parent="#video">
                 <li>
-                    <a href="{{ route('video.create') }}"
+                    <a href="{{ route('video.index') }}"
                         class="nav-link {{ $currentRouteName == 'video.index'|| $currentRouteName == 'video.create' || $currentRouteName == 'video.edit'  ? 'active' : '' }}"
                         class="nav-link"><span>video</span>
                     </a>
@@ -195,28 +193,6 @@
             </ul>
         </li>
 
-        {{-- <li class="accordion-item">
-            <a href="#" class="accordion-button {{ $currentRoute == 'video' ? '' : 'collapsed' }}"
-                data-bs-toggle="collapse" data-bs-target="#video"
-                aria-expanded="{{ $currentRoute == 'video' ? 'true' : 'false' }}"
-                aria-controls="video">
-                <i class="bi bi-menu-up"></i>
-                <span class="me-auto">Footer Pages</span>
-            </a>
-
-            <ul id="video"
-                class="accordion-collapse collapse {{ $currentRoute == 'video' ? 'show' : '' }}"
-                data-bs-parent="#video">
-                <li>
-                    <a href="{{ route('video.create') }}"
-                        class="nav-link {{ $currentRouteName == 'video.index'|| $currentRouteName == 'video.create' || $currentRouteName == 'video.edit'  ? 'active' : '' }}"
-                        class="nav-link"><span>video</span>
-                    </a>
-
-                </li>
-
-            </ul>
-        </li> --}}
         <li class="accordion-item">
             <a href="#" class="accordion-button {{ $currentRoute == 'footer' ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" data-bs-target="#footer"

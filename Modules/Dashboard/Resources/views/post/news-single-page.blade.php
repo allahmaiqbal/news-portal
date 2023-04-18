@@ -1,6 +1,7 @@
 @extends('dashboard::layouts.master')
 
 @section('title', 'সম্পূর্ণ নিউজ')
+{{-- @section('title', $post->title) --}}
 @section('content')
  <!-- single-news-area start -->
  @push('style')
@@ -18,7 +19,7 @@
                     {{-- <img src="https://placehold.co/767x100/png" alt=""> --}}
                 </div>
                 <p class="category-title d-block fs-5 fw-normal pb-2 mb-4"  >
-                    সম্পূর্ণ নিউজ
+                    সম্পূর্ণ নিউজ fdgdsdf
                 </p>
                 <div class="row g-3 mb-3">
                     <div class="col-1">

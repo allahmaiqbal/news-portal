@@ -415,25 +415,99 @@
                     <a href="#" class="title d-block fs-5 fw-normal pb-2 mb-4">
                         ভিডিও
                     </a>
+                   @foreach ($videos->take(1) as $video )
                     <div class="news-buletin">
-                        <iframe class="buletin mb-4" src="https://www.youtube.com/embed/-R7MFU4eepw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+                        {!! $video->link !!}
                         <p class="category text-danger mb-2">
-                            বুলেটিন
+                            {{ $video->category }}
                         </p>
 
                         <h2 class="bulletin-title fw-normal">
-                            শীর্ষ সংবাদ | দুপুর ১২টা | ০৫ মার্চ ২০২৩ | Rongdhonu TV | Latest Bangladeshi News
+                            {{$video->title}}
                         </h2>
                     </div>
 
+                   @endforeach
+
                 </div>
+
                 <div class="col-lg-5">
                     <h6 class="title d-block fs-5 fw-normal pb-3 mb-4">
                         পরবর্তী ভিডিও
                     </h6>
+                    {{-- //paly all video in here
+                    @foreach ($videos->take(1) as $video )
+                    <h1>{!! $video->link!!}</h1>
+                    @endforeach
+                    //all video list
+                    @foreach ($videos->skip(1) as $video )
+                      <h1>{!! $video->link!!}</h1>
+                    @endforeach --}}
+
+                    @foreach($videos->skip(1) as $video)
+                        <a href="#"  class="more-video d-block bg-white shadow">
+                            <div class="row g-3">
+                                <div class="col-lg-5 col-md-4 col-5 m-0">
+                                    <div class="news-img position-relative me-3">
+                                        {!! $video->link !!}
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-8 col-7">
+                                    <div class="news-text">
+                                        <span class="category d-block text-danger mb-2">
+                                            {{ $video->category }}
+                                        </span>
+                                        <p class="bulletin-title fw-normal">
+                                            {{ $video->title }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                    {{-- <a href="#"  class="more-video d-block bg-white shadow">
+                        <div class="row g-3">
+                            <div class="col-lg-5 col-md-4 col-5 m-0">
+                                <div class="news-img position-relative me-3">
+                                    <iframe class="buletin mb-4" src="https://www.youtube.com/embed/-R7MFU4eepw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-8 col-7">
+                                <div class="news-text">
+                                    <span class="category d-block text-danger mb-2">
+                                  fsdfdsf
+                                    </span>
+
+                                    <p class="bulletin-title fw-normal">
+                                 gsdfgsdfsd
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
 
                     <a href="#"  class="more-video d-block bg-white shadow">
+                        <div class="row g-3">
+                            <div class="col-lg-5 col-md-4 col-5 m-0">
+                                <div class="news-img position-relative me-3">
+                                    <iframe class="buletin mb-4" src="https://www.youtube.com/embed/-R7MFU4eepw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-8 col-7">
+                                <div class="news-text">
+                                    <span class="category d-block text-danger mb-2">
+                                  fsdfdsf
+                                    </span>
+
+                                    <p class="bulletin-title fw-normal">
+                                 gsdfgsdfsd
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a> --}}
+
+                    {{-- <a href="#"  class="more-video d-block bg-white shadow">
                         <div class="row g-3">
                             <div class="col-lg-5 col-md-4 col-5 m-0">
                                 <div class="news-img position-relative me-3">
@@ -523,30 +597,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-
-                    <a href="#"  class="more-video d-block bg-white shadow">
-                        <div class="row g-3">
-                            <div class="col-lg-5 col-md-4 col-5 m-0">
-                                <div class="news-img position-relative me-3">
-                                    <div class="icon bg-danger position-absolute top-50 start-50 translate-middle rounded-circle text-center">
-                                        <i class="fa-solid fa-play text-white"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-8 col-7">
-                                <div class="news-text">
-                                    <span class="category d-block text-danger mb-2">
-                                        বুলেটিন
-                                    </span>
-
-                                    <p class="bulletin-title fw-normal">
-                                        শীর্ষ সংবাদ | দুপুর ১২টা | ০৫ মার্চ ২০২৩ | Rongdhonu TV
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    </a> --}}
 
                 </div>
             </div>
